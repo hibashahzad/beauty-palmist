@@ -1,0 +1,43 @@
+.selectionCard {
+  width: 85% !important;
+  border: 10px solid rgba(255, 255, 255, 0.5) !important;
+  -webkit-background-clip: padding-box !important; /* for Safari */
+  background-clip: padding-box !important;
+  transition: 1s all;
+}
+.businessCard {
+  width: 85% !important;
+  border: 10px solid rgba(255, 255, 255, 0.5) !important;
+  -webkit-background-clip: padding-box !important; /* for Safari */
+  background-clip: padding-box !important;
+  transition: 1s all;
+}
+.main {
+  height: 100%;
+  padding: 50px 0px;
+  background-image: url("https://static.wixstatic.com/media/11062b_470f3c8f617842fb8dca582e36250a42~mv2.jpg/v1/fill/w_1349,h_861,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_470f3c8f617842fb8dca582e36250a42~mv2.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imageset {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+}
+.white {
+  height: 200px;
+  transition: 1s all;
+}
+.register {
+  border: 2px solid black !important;
+  font-weight: 500;
+}
+.white:hover {
+  height: 250px;
+}
+.businessCard:hover,
+.selectionCard:hover {
+  transform: scale(1.1);
+}

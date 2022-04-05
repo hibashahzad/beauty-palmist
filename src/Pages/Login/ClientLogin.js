@@ -1,6 +1,15 @@
 import React from "react";
 import classes from "./Login.module.css";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const ClientLogin = () => {
+  let navigate = useNavigate();
+  let Business = () => {
+    navigate("/Business");
+  };
+  let Select = () => {
+    navigate("/Selection ");
+  };
   return (
     <div class={`${classes[`main-container`]}`}>
       <div class={`container `}>
@@ -25,6 +34,7 @@ const ClientLogin = () => {
                 </div>
                 <div class="col-md-6 ">
                   <button
+                    onClick={Business}
                     class={`btn btn-primary ${classes.btnsize} ${classes.bussiness}`}
                   >
                     Bussiness
@@ -78,7 +88,7 @@ const ClientLogin = () => {
                   >
                     Login
                   </button>
-                  <h3>
+                  <h3 onClick={Select} style={{ cursor: "pointer" }}>
                     Don't have an account? <i>Sign Up</i>
                   </h3>
                 </form>{" "}

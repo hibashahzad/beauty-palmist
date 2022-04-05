@@ -1,6 +1,11 @@
 import React from "react";
 import classes from "./BusinessLogin.module.css";
+import { useNavigate } from "react-router-dom";
 const BusniessLogin = () => {
+  let navigate = useNavigate();
+  let Client = () => {
+    navigate("/");
+  };
   return (
     <div class={`${classes[`main-container`]}`}>
       <div class={`container `}>
@@ -20,6 +25,7 @@ const BusniessLogin = () => {
               >
                 <div class="col-md-6 ">
                   <button
+                    onClick={Client}
                     class={`btn btn-primary ${classes.btnsize} ${classes.z} `}
                   >
                     Client

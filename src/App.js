@@ -4,11 +4,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import ClientLogin from "./Pages/Login/ClientLogin";
 import BusniessLogin from "./Pages/Login/BusinessLogin";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Selection from "./Pages/SignUpSelection/Selection";
 
 function App() {
   return (
     <>
-      <BusniessLogin />
+      <Routes>
+        <Route path="/" element={<ClientLogin />} />
+        <Route path="/Business" element={<BusniessLogin />} />
+        <Route path="/Selection" element={<Selection />} />
+      </Routes>
     </>
   );
 }
