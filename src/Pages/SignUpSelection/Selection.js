@@ -1,6 +1,11 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import classes from "./Selection.module.css";
+import { useNavigate } from "react-router-dom";
 const Selection = () => {
+  let navigate = useNavigate();
+  let register = () => {
+    navigate("/ClientR");
+  };
   return (
     <div className={classes.main}>
       <div class="container">
@@ -15,6 +20,7 @@ const Selection = () => {
               />
               <div class={`${classes.white} card-body`}>
                 <button
+                  onClick={register}
                   type="button"
                   class={`btn ${classes.register} btn-outline-dark btn-lg`}
                 >
