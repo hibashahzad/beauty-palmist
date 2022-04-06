@@ -61,7 +61,7 @@ const CRegister = () => {
                     type="submit"
                     class={`btn btn-outline-dark  ${classes.cancel}`}
                   >
-                    Login
+                Have an Account ?Login
                   </button>
                   <button
                     onClick={() => signup("/Selection")}

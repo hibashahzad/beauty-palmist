@@ -3,8 +3,8 @@ import classes from "./Selection.module.css";
 import { useNavigate } from "react-router-dom";
 const Selection = () => {
   let navigate = useNavigate();
-  let register = () => {
-    navigate("/ClientR");
+  let register = (name) => {
+    navigate("/"+name);
   };
   return (
     <div className={classes.main}>
@@ -20,7 +20,7 @@ const Selection = () => {
               />
               <div class={`${classes.white} card-body`}>
                 <button
-                  onClick={register}
+                  onClick={()=>register("ClientR")}
                   type="button"
                   class={`btn ${classes.register} btn-outline-dark btn-lg`}
                 >
@@ -38,6 +38,7 @@ const Selection = () => {
               />
               <div class={`${classes.white} card-body`}>
                 <button
+                 onClick={()=>register("BRegister")}
                   type="button"
                   class={`btn ${classes.register} btn-outline-dark btn-lg`}
                 >

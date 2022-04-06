@@ -35,3 +35,10 @@ h1 {
   font-size: 40px !important;
   font-weight: bold !important;
 }
+.navbar-light .navbar-nav .nav-link {
+  color: #BCBCBC !important;
+}
+.navbar-light .navbar-toggler {
+color:white !important;
+background-color:white
+}

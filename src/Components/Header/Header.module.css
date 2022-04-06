@@ -1,0 +1,44 @@
+header {
+    background: linear-gradient(to right, #33ccff 52%, #0066ff 100%);
+    color: #fff;
+  }
+  
+  li {
+    display: inline-block;
+  }
+
+
+.while{
+
+font-size: 18px;
+
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px;
+    display: block;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+.bgnavbar{
+  background-color:pink !important;
+}
+.imagemargin{
+margin:8px;
+cursor: pointer;
+}
+a:active{
+  background: white;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 300px) and (min-width: 200px)  {
+  .small{
+    margin-top:8px;
+  
+  }
+}

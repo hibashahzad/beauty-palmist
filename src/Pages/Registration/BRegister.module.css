@@ -1,0 +1,96 @@
+.LoginCard{
+    border-radius: 20px;
+    margin-top: 20px;
+    width: 60%;
+   }
+  
+   .login{
+       border-radius: 20px;
+       width: 100%;
+       height: 50px;
+       background-color: purple;
+       color: white;
+       font-weight: 400;
+       margin-top: 10px;
+       margin-bottom: 10px;
+   }
+  
+
+     .titleCard{
+       background-color: rgba(255, 255, 255, 0.5);
+       height: 70%;
+     }
+    
+     .lib{
+         margin-top: 10px !important;
+         margin-bottom: 10px !important;
+         color: gray !important;
+         font-weight: 500px !important;
+     }
+   
+   
+   .fb {
+     background: #3B5998;
+     color: white;
+     height: 50px;
+     font-size: 30px;
+     text-align: center;
+     width: 50px;
+     text-decoration: none;
+     margin: 5px 2px;  
+     border-radius: 50%;
+   }
+   .cancel {
+    border-radius: 20px;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 8px;
+  }
+   .fw {
+     background: #55ACEE;
+     color: white;
+     height: 50px;
+     font-size: 30px;
+     text-align: center;
+     width: 50px;
+     text-decoration: none;
+     margin: 5px 2px;  
+     border-radius: 50%;
+   }
+   .fy {
+       background: #bb0000;
+       color: white;
+       height: 50px;
+       font-size: 30px;
+       text-align: center;
+       width: 50px;
+       text-decoration: none;
+       margin: 5px 2px;  
+       border-radius: 50%;
+     }
+     
+     .fi {
+       background: #125688;
+       color: white;
+       height: 50px;
+       font-size: 30px;
+       text-align: center;
+       width: 50px;
+       text-decoration: none;
+       margin: 5px 2px;  
+       border-radius: 50%;
+     }
+     .main{
+        padding: 50px 0px;
+       height :100%;
+         background-image: url("https://static.wixstatic.com/media/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg/v1/fill/w_1349,h_978,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg");
+         background-size: cover;
+     }
+     .head1{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: start;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+    }
