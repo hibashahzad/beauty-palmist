@@ -1,0 +1,42 @@
+
+.main{
+    background-image: url("https://static.wixstatic.com/media/11062b_8453616f683b48e9900aa00791b6cc4b~mv2.jpg/v1/fill/w_1349,h_625,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_8453616f683b48e9900aa00791b6cc4b~mv2.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.servicebtn{
+border: 2px solid black;
+background-color: white !important;
+width: 120px;
+color: black;
+font-weight: bold;
+}
+.servicec{
+    position: relative !important;
+
+}
+.head1{
+   margin-top: 20px;
+    font-style: italic;
+     text-align: center; 
+     margin-bottom: 20px;
+}
+.serviceb{
+    position: absolute !important;
+    bottom: -30px !important;
+   left:22%!important
+    
+
+}
+.servicecard{
+    position: relative !important;
+ padding: 40px 20px;
+    width: 300px !important;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  
+
+}
+.bgcolor{
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+}

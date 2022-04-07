@@ -1,0 +1,19 @@
+.login-btn {
+    border-radius: 0px !important;
+    width: 50% !important;
+    height: 40px !important;
+    background-color: lightskyblue !important;
+    color: white !important;
+    font-weight: 500 !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .head1{
+      font-weight: 700px;
+      font-size: 34px !important;
+      margin-bottom: 20px !important;
+  }
+ .main{
+      background-color:pink  !important;
+      height: 100%;
+  }

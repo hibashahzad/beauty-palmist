@@ -7,7 +7,9 @@ import BusniessLogin from "./Pages/Login/BusinessLogin";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Selection from "./Pages/SignUpSelection/Selection";
 import CRegister from "./Pages/Registration/ClientRegister";
-import BRegister from './Pages/Registration/BusinessRegister';
+import BRegister from "./Pages/Registration/BusinessRegister";
+import Services from "./Pages/Services/Services.js";
+import Home from "./Pages/Home/Home";
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route path="/Selection" element={<Selection />} />
         <Route path="/ClientR" element={<CRegister />} />
         <Route path="/BRegister" element={<BRegister />} />
-        
+        <Route path="/Services" element={<Services />} />
+        <Route path="/Home" element={<Home />} />
       </Routes>
     </>
   );
