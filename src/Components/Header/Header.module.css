@@ -7,7 +7,10 @@ header {
     display: inline-block;
   }
 
-
+.set{
+  margin-left:-30px;
+  margin-bottom:-80px;
+}
 .while{
 
 font-size: 18px;
@@ -35,10 +38,29 @@ a:active{
   background: white;
   border-radius: 10px;
 }
+.imagese{
+  margin-left:-20px;
+}
+.profile{
+  margin-bottom: 120px; margin-right: 50px
+}
 
 @media only screen and (max-width: 300px) and (min-width: 200px)  {
   .small{
     margin-top:8px;
   
   }
+}@media only screen and (max-width: 992px) and (min-width: 200px)  {
+  .set{
+    margin-left:0px !important;
+    margin-bottom:0;
+  }
+  .profile{
+   margin: auto;
+  }
 }
+@media only screen and (max-width: 1190px) and (min-width: 992px)  {
+  .set{
+ width:100%
+   
+  }}

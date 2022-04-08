@@ -42,19 +42,19 @@ h1 {
   display: block;
 }
 .dropdown-item{
-  color: white !important;
+  color: black !important;
 }
 .dropdown-menu,.dropdown-toggle  {
   background-color: transparent !important;
   border: 0px;
-  color:white !important;
+  color:black !important;
 }
 .drop{
   background-color: transparent !important;
 }
 .dropdown-menu {
   
-  background-color: black !important;
+  background-color: white !important;
 }
 .navbar-light .navbar-toggler {
 color:white !important;
