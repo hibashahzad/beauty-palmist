@@ -1,46 +1,67 @@
 import {
+  Navbar,
+  Container,
+  Nav,
+  DropdownButton,
+  Dropdown,
+} from "react-bootstrap";
+import React from "react";
+import classes from "./Header.module.css";
 
-    Navbar,
-    Container,
-    Nav,
-  
-  } from "react-bootstrap";
-  import React from "react";
-  import classes from "./Header.module.css";
-
-  const Header = () => {
-    const navRoadmapHandler = (names) => {
-      const element = document.getElementById(names);
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    };
-    return (
-      <Navbar className={classes.bgnavbar}   expand="lg" sticky="top">
-        <Container  
-  > 
-          <Navbar.Brand href="#">
-            <img src="logo.svg"    alt="refresh page again"/>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" className={classes.small}/>
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="my-2 my-lg-0 ms-md-auto">
-            
-                <Nav.Link
-                  className={`${classes.white} normal1`}
-             
-              
-                >
-                 fff
-                </Nav.Link>
-         
-             
-            
-            </Nav>
-            
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
+const Header = () => {
+  const navRoadmapHandler = (names) => {
+    const element = document.getElementById(names);
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  
-  export default Header;
-  
+  return (
+    <Container style={{marginTop:"14px"}}>
+      <Navbar className={classes.bgnavbar} expand="lg" sticky="top" style={{padding:"10px"}}>
+        <Navbar.Brand href="#" className="d-flex">
+          <img
+            src="https://static.wixstatic.com/media/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg/v1/fill/w_312,h_319,al_c,lg_1,q_80,enc_auto/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg"
+            alt="refresh page again"
+            width="65%"
+          />
+          <div>dd</div>
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls="navbarScroll" className={classes.small} />
+
+        <Navbar.Collapse id="navbarScroll">
+          <Nav className="my-2 my-lg-0 ms-md-auto mt-5 pt-5 ps-5 ">
+            <Nav.Link className={`${classes.white} normal1`}>Home</Nav.Link>
+            <Nav.Link className={`${classes.white} normal1`}>Services</Nav.Link>
+            <Nav.Link className={`${classes.white} normal1`}>
+              Palmist Quiz
+            </Nav.Link>
+            <Nav.Link className={`${classes.white} normal1`}>Login</Nav.Link>
+
+            <Nav.Link className={`${classes.white} normal1`}>Sign up</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+
+        <div style={{ marginBottom: "120px", marginRight: "50px" }} className="d-lg-inline d-none">
+          <div style={{ display: "flex" ,alignItems:"center"}}>
+            <i class="fa fa-home fa-fw" style={{fontSize:"40px"}}></i>
+           
+              <DropdownButton
+                id="dropdown-basic-button"
+                title="Awais Shahbaz"
+            className="drop"
+              >
+                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                
+              </DropdownButton>
+       
+          </div>
+          <div>
+            {" "}
+            <button   className="btn btn-dark w-75" style={{ display: "block" }}>ss</button>
+          </div>
+        </div>
+      </Navbar>
+    </Container>
+  );
+};
+
+export default Header;
