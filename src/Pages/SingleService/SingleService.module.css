@@ -1,0 +1,33 @@
+.head5{
+ margin-top: 20px; 
+ font-size: 24px;
+  font-weight: bolder;
+}
+.main{
+    background-color: gray;
+}
+.detailservicebtn{
+    border-radius: 20px;
+    color: white;
+    background-color: #271271;
+    width: 50%;
+}
+.reviewcard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.detailservicebtn{
+    border-radius: 20px;
+    color: white;
+    background-color: #328297;
+    width: 50%;
+}
+.cardbuttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

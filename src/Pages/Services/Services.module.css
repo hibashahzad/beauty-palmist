@@ -20,6 +20,7 @@ font-weight: bold;
     font-style: italic;
      text-align: center; 
      margin-bottom: 20px;
+     font-size:50px !important;
 }
 .serviceb{
     position: absolute !important;
@@ -31,7 +32,7 @@ font-weight: bold;
 .servicecard{
     position: relative !important;
  padding: 40px 20px;
-    width: 300px !important;
+    width: 280px !important;
     box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
   
 

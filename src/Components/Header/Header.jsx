@@ -7,14 +7,15 @@ import {
 } from "react-bootstrap";
 import React from "react";
 import classes from "./Header.module.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const navRoadmapHandler = (names) => {
-    const element = document.getElementById(names);
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  const naviagte = useNavigate();
+  const move = (name) => {
+    naviagte(name);
   };
   return (
-    <Container style={{ marginTop: "14px" ,paddingBottom:"30px"}}>
+    <Container style={{ marginTop: "14px", paddingBottom: "30px" }}>
       <Navbar
         className={classes.bgnavbar}
         expand="lg"
@@ -28,8 +29,10 @@ const Header = () => {
             width="50%"
           />
           <div>
-            <div>Beauty Palmist</div>
-            <div style={{ fontSize: "14px" }}>The Future of Your Beauty</div>
+            <div style={{ fontWeight: "bold" }}>Beauty Palmist</div>
+            <div style={{ fontSize: "14px", fontStyle: "italic" }}>
+              The Future of Your Beauty
+            </div>
           </div>
         </Navbar.Brand>
 
@@ -37,14 +40,37 @@ const Header = () => {
 
         <Navbar.Collapse id="navbarScroll" className={classes.set}>
           <Nav className="my-lg-0  mt-5 pt-5  ">
-            <Nav.Link className={`${classes.white} normal1`}>Home</Nav.Link>
-            <Nav.Link className={`${classes.white} normal1`}>Services</Nav.Link>
-            <Nav.Link className={`${classes.white} normal1`}>
+            <Nav.Link
+              className={`${classes.white} normal1`}
+              onClick={() => move("/Home")}
+            >
+              Home
+            </Nav.Link>
+            <Nav.Link
+              className={`${classes.white} normal1`}
+              onClick={() => move("/Services")}
+            >
+              Services
+            </Nav.Link>
+            <Nav.Link
+              className={`${classes.white} normal1`}
+              onClick={() => move("/Services")}
+            >
               Palmist Quiz
             </Nav.Link>
-            <Nav.Link className={`${classes.white} normal1`}>Login</Nav.Link>
+            <Nav.Link
+              className={`${classes.white} normal1`}
+              onClick={() => move("/")}
+            >
+              Login
+            </Nav.Link>
 
-            <Nav.Link className={`${classes.white} normal1`}>Sign up</Nav.Link>
+            <Nav.Link
+              className={`${classes.white} normal1`}
+              onClick={() => move("/ClientR")}
+            >
+              Sign up
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
 

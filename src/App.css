@@ -15,6 +15,72 @@ h4,
 h5 {
   font-weight: 500px !important;
 }
+.badge {
+  font-size: 25px;
+  font-weight: 200
+}
+
+.badge i {
+  font-size: 20px;
+  font-weight: 200
+}
+
+.about-rating {
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 10px
+}
+
+.total-ratings {
+  font-size: 12px
+}
+
+.bg-custom {
+  background-color: #b7dd29 !important
+}
+.padding-bottom-7{
+	padding-bottom:7px;
+}
+
+.review-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px;
+	border-radius:3px;
+	margin-bottom:15px;
+}
+.review-block-name{
+	font-size:12px;
+	margin:10px 0;
+}
+.review-block-date{
+	font-size:12px;
+}
+.review-block-rate{
+	font-size:13px;
+	margin-bottom:15px;
+}
+.review-block-title{
+	font-size:15px;
+	font-weight:700;
+	margin-bottom:10px;
+}
+.review-block-description{
+	font-size:13px;
+}
+.btn-grey{
+  background-color:#D8D8D8;
+color:#FFF;
+}
+.rating-block{
+background-color:#FAFAFA;
+border:1px solid #EFEFEF;
+padding:15px 15px 20px 15px;
+border-radius:3px;
+}
+.progress {
+  margin-top: 10px
+}
 .form-group {
   margin-top: 20px !important;
 }
