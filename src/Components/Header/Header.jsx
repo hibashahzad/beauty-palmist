@@ -54,7 +54,7 @@ const Header = () => {
             </Nav.Link>
             <Nav.Link
               className={`${classes.white} normal1`}
-              onClick={() => move("/Services")}
+              onClick={() => move("/Palmist")}
             >
               Palmist Quiz
             </Nav.Link>

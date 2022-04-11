@@ -14,6 +14,7 @@ import Header from "./Components/Header/Header";
 import SubCat from "./Pages/SubCat/SubCat";
 import ServiceList from "./Pages/ServiceList/Servicelist";
 import SingleService from "./Pages/SingleService/SingleService";
+import PCategory from "./Pages/Palmist/PalmistCategory/PCategory.js";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/Category" element={<SubCat />} />
         <Route path="/List" element={<ServiceList />} />
         <Route path="/SingleService" element={<SingleService />} />
+        <Route path="/Palmist" element={<PCategory />} />
       </Routes>
     </>
   );

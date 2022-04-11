@@ -10,6 +10,9 @@ const ClientLogin = () => {
   let Select = () => {
     navigate("/Selection ");
   };
+  let Services = () => {
+    navigate("/Home ");
+  };
   return (
     <div class={`${classes[`main-container`]}`}>
       <div class={`container `}>
@@ -84,6 +87,7 @@ const ClientLogin = () => {
                   </div>
                   <button
                     type="submit"
+                    onClick={(e) => Services()}
                     class={`btn btn-primary ${classes[`login-btn`]}`}
                   >
                     Login

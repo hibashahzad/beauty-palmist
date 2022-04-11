@@ -3,8 +3,8 @@ import classes from "./Home.module.css";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   let navigate = useNavigate();
-  let Client = () => {
-    navigate("/Services");
+  let Client = (name) => {
+    navigate(name);
   };
   return (
     <div className={classes.main} style={{ backgroundColor: "blue" }}>
@@ -32,7 +32,9 @@ const Home = () => {
                   />
                 </div>
                 <button
-                  type="submit"
+                  onClick={() => {
+                    Client("/Palmist");
+                  }}
                   class={`btn btn-primary ${classes[`login-btn`]}`}
                 >
                   View
@@ -55,7 +57,7 @@ const Home = () => {
                   />
                 </div>
                 <button
-                  type="submit"
+                  onClick={() => Client("/Services")}
                   class={`btn btn-primary ${classes[`login-btn`]}`}
                 >
                   View
