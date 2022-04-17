@@ -1,0 +1,96 @@
+.maindashboard{
+    background-color: #F7F7F7!important;
+}
+.maintitle{
+    margin: 30px
+}
+.cardBookings{
+    background-image: linear-gradient(to right, pink , white);
+    color: white;
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 12px 12px 12px 12px silver;
+    display: flex;
+    flex-direction: column;
+justify-content: space-between;}
+.cardServices{
+    background-image: linear-gradient(to right, teal , cyan);
+    color: white;
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 12px 12px 12px 12px silver;
+    display: flex;
+    flex-direction: column;
+justify-content: space-between;
+}
+.cardSettings{
+    background-image: linear-gradient(to right, greenyellow , white);
+    color: white;
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: 12px 12px 12px 12px silver;
+    display: flex;
+    flex-direction: column;
+justify-content: space-between;
+}
+.forwardbtn{
+    border-radius: 50%;
+    float: right;
+    font-weight: bolder;
+    color: black;
+    border: 3px solid black;
+}
+.statsCard{
+    width: 80%;
+    margin: 0 auto;
+    height: 200px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    box-shadow: 5px 5px 5px 5px silver;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.statsh4{
+    text-align: center;
+margin: 30px;
+font-weight: bold;
+}
+.statsh3{
+    text-align: center;
+    font-weight: bold;
+    }
+.statsh5{
+        text-align: center;
+}
+.todaybar{
+    background-color: maroon;
+    color: white;
+
+}
+.monthlybar{
+    background-color: blue;
+    color: white;
+    width: 65%;
+}
+.slideshows{
+    width: 100%;
+    margin: 20px;
+}
+.titletext{
+    font-weight: bold;
+    font-size: 24px;
+}
+.statsimg{
+width: 100%;
+height: 100%;
+}

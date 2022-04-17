@@ -104,6 +104,9 @@ const SingleService = () => {
                     <div class="rating-progress-bars p-3">
                       <div class="progress-1 align-items-center">
                         <div class="progress">
+                          <span class="mx-2" style={{ fontWeight: "bold" }}>
+                            5 Stars
+                          </span>
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
@@ -117,6 +120,9 @@ const SingleService = () => {
                           </div>
                         </div>
                         <div class="progress">
+                          <span class="mx-2" style={{ fontWeight: "bold" }}>
+                            4 Stars
+                          </span>
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
@@ -129,6 +135,9 @@ const SingleService = () => {
                           </div>
                         </div>
                         <div class="progress">
+                          <span class="mx-2" style={{ fontWeight: "bold" }}>
+                            3 Stars
+                          </span>
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
@@ -141,6 +150,9 @@ const SingleService = () => {
                           </div>
                         </div>
                         <div class="progress">
+                          <span class="mx-2" style={{ fontWeight: "bold" }}>
+                            2 Stars
+                          </span>
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
@@ -153,6 +165,9 @@ const SingleService = () => {
                           </div>
                         </div>
                         <div class="progress">
+                          <span class="mx-2" style={{ fontWeight: "bold" }}>
+                            1 Stars
+                          </span>
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"

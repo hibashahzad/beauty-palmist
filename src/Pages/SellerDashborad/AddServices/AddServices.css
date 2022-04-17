@@ -1,0 +1,56 @@
+.mainAddService{
+    background-image: url(https://static.wixstatic.com/media/11062b_8b22b23092f6424dbc6b99c880e11042~mv2.jpg/v1/fill/w_1349,h_625,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_8b22b23092f6424dbc6b99c880e11042~mv2.jpg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.addServiceCard{
+    width: 80%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+.titleService{
+    font-weight: bold;
+    font-size: 30px;
+}
+.ServiceTextfield{
+    border: 2px solid gray;
+    background: transparent;
+}
+::placeholder{
+    color: silver;
+}
+.ServiceLabel{
+    color: gray;
+    font-weight: 500;
+}
+.qbutton{
+    margin-top: 10px;
+    width: 100%;
+    color: #993500;
+    margin-bottom: 10px;
+background-color: rgb(248, 142, 160);}
+
+.salecard{
+    background-color: #FFF86BB0;
+    margin-bottom: 10px;
+}
+.saletitle{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+}
+.descriptiontextfield{
+    height: 100px;
+    border: 2px solid gray;
+    background: transparent;
+}
+.submitbtn{
+    margin-top: 20px;
+}
+.btndiv{
+    text-align: center;
+}

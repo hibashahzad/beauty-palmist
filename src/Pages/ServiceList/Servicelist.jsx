@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import classes from "./ServiceList.module.css";
 const ServiceList = () => {
   const navigate = useNavigate();
@@ -54,6 +54,7 @@ const ServiceList = () => {
           ))}
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };

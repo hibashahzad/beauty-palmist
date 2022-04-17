@@ -1,0 +1,27 @@
+.actionbtn{
+    width: 40%;
+    margin: 0 auto;
+}
+.actionbtn:hover{
+    background-color: blueviolet;
+    color: white;
+}
+.servicepro{
+    color: blue;
+}
+.info{
+    color: gray;
+}
+.nav-tabs {
+    border-bottom: 0px;
+    margin:10px 0px !important;
+}
+.booktopcard{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border: 0px !important;
+}
+.mainbookings{
+    background: #BFBFBF;
+}

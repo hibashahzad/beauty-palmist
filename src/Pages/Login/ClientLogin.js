@@ -92,9 +92,6 @@ const ClientLogin = () => {
                   >
                     Login
                   </button>
-                  <h3 onClick={Select} style={{ cursor: "pointer" }}>
-                    Don't have an account? <i>Sign Up</i>
-                  </h3>
                 </form>{" "}
               </div>
             </div>

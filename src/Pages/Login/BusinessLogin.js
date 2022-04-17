@@ -6,6 +6,9 @@ const BusniessLogin = () => {
   let Client = () => {
     navigate("/");
   };
+  const move = (name) => {
+    navigate(name);
+  };
   return (
     <div class={`${classes[`main-container`]}`}>
       <div class={`container `}>
@@ -67,21 +70,10 @@ const BusniessLogin = () => {
                       placeholder="Password"
                     />
                   </div>
-                  <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="exampleCheck1"
-                    />
-                    <label
-                      class={` form-check-label ${classes.remember}`}
-                      for="exampleCheck1"
-                    >
-                      Remember Me
-                    </label>
-                  </div>
+
                   <button
                     type="submit"
+                    onClick={() => move("/Seller/Dashborad")}
                     class={`btn btn-primary ${classes[`login-btn`]}`}
                   >
                     Login

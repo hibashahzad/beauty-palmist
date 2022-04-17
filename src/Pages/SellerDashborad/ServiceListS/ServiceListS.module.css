@@ -1,0 +1,43 @@
+.sectionset{
+    background-color: #E6D8D7;
+    padding: 20px;
+    border: 4px solid rgba(156, 155, 242, 1);
+}
+.width{
+    width:90%;
+    margin: auto;
+}
+.login-btn {
+   
+    width: 100% !important;
+   
+    background-color: transparent !important;
+    color: #532563!important;
+    font-weight: 500 !important;
+ 
+    transition: all 0.5s;
+    border:2px solid #532563;
+    box-sizing: border-box;
+
+  }
+  .login-btn:hover{
+      color: white !important;
+      background-color: #532563 !important
+  }
+  .circle{
+     
+      width: 85%;
+      text-align: center;
+  
+      max-width: 200px;
+  }
+  .main{
+      border-radius: 10px !important;
+      box-sizing: border-box !important;
+  }
+  .range{
+      color: #E8CE52 !important;
+      font-size: 25px !important;
+      padding: 10px;
+      cursor: pointer;
+  }

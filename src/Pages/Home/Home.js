@@ -40,14 +40,14 @@ const Home = () => {
                   View
                 </button>
                 <h2 class={`card-title ${classes.head1}`}>The Palmist</h2>
-                <p class="card-text text-muted py-2">
+                <p class="card-text text-muted py-1">
                   Your beauty answers are just a few questions away!
                 </p>
               </div>
             </div>
           </div>
-          <div class="col-md-4  text-center flipY" data-t-show="2">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
+          <div class="col-md-4 text-center flipY" data-t-show="2">
+            <div class="card shadow p-4 mb-5 bg-white rounded">
               <div class="card-body">
                 <div class="card-img-top">
                   <img

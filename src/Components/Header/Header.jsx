@@ -91,12 +91,19 @@ const Header = () => {
               title="Awais Shahbaz"
               className="drop"
             >
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+              <Dropdown.Item onClick={() => move("/MyBooking")}>
+                My Bookings
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
             </DropdownButton>
           </div>
           <div>
             {" "}
-            <button className="btn btn-dark w-75" style={{ display: "block" }}>
+            <button
+              className="btn btn-dark w-75"
+              style={{ display: "block" }}
+              onClick={() => move("/MyBooking")}
+            >
               My Booking
             </button>
           </div>

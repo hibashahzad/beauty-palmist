@@ -1,0 +1,74 @@
+.settingcard{
+  
+   
+   }
+   .sd{
+       border:0px;
+   }
+   .bold{
+       font-weight:bold;
+       margin:20px 2px
+   }
+   .toppings{
+       width: 100%;
+       margin-bottom: 30px;
+       text-align: center;
+       font-weight: bolder;
+       font-size: 30px;
+       border: 2px 0px solid black;
+   
+       background-color: blueviolet;
+       color: white;
+       box-shadow: 12px 12px 12px 12px silver;
+   
+   }
+   .hdcard{
+       background-image: linear-gradient(to right, blueviolet , white);
+       color: white;
+   }
+   .avatarpic{
+       border-radius: 50%;
+       width: 100px;
+       height: 100px;
+   }
+   .sidesettingcard{
+   
+       background-color: blueviolet;
+       border: 2px solid white;
+       color: white;
+       border-radius: 30px;
+       padding: 20px;
+   }
+   .status{
+       font-weight: bold;
+       color: greenyellow;
+   }
+   .settingfield{
+       border: 2px solid gray;
+       margin-top: 60px;
+       background: transparent;
+   }
+   .docfield{
+       border: 2px solid white;
+       background: transparent;
+   }
+   .sidecardlbl{
+       font-weight: bold;
+       font-style: italic;
+       color: white;
+       margin-top: 20px;
+   }
+   .btnupdate{
+   text-align: center;
+   }
+   .approvalbtn{
+       width: 50%;
+       margin: 0 auto;
+       margin-top: 20px;
+   }
+   .aboutfield{
+       border: 2px solid gray;
+       height: 100px;
+       margin-top: 20px;
+       margin-bottom: 20px;
+   }
