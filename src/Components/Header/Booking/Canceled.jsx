@@ -5,7 +5,7 @@ const Canceled = () => {
         <div class="row py-2">
           <div class="col-md-6">
             <h5>Service Name</h5>
-            <h5 class="servicepro">Client Name | Client Email</h5>
+            <h5 class="servicepro">Service Provider</h5>
             <h6 class="info">Date . Time . Price . Booking ID</h6>
           </div>
           <div class="col-md-6">
@@ -14,7 +14,7 @@ const Canceled = () => {
                 View Booking Form
               </button>
               <div class="alert alert-success" role="alert">
-                Cancelled by Client/Company Name
+                Cancelled by Company Name
               </div>
             </div>
           </div>

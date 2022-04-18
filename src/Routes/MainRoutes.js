@@ -17,6 +17,7 @@ import Profile from "../Pages/SellerDashborad/Home/Profile/Profile";
 import ServiceListS from "../Pages/SellerDashborad/ServiceListS/ServicelistS";
 import AddServices from "../Pages/SellerDashborad/AddServices/AddServices";
 import MyBooking from "../Pages/MyBooking/myBooking";
+import BookingSchedule from "../Pages/SellerDashborad/BookingsSchedule/BookingsS";
 
 export default function MainRoutes() {
   return (
@@ -40,6 +41,7 @@ export default function MainRoutes() {
           <Route path="Profile" element={<Profile />} />
           <Route path="ServiceListS" element={<ServiceListS />} />
           <Route path="AddServices" element={<AddServices />} />
+          <Route path="MyBookings" element={<BookingSchedule />} />
           <Route path="AddServices/:id" element={<AddServices />} />
         </Route>
       </Routes>

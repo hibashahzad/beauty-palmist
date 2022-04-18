@@ -22,7 +22,7 @@ const MyBooking = () => {
                 <h6 class="card-subtitile py-4">
                   View, reschedule & cancel your bookings and easily book again.
                   <br />
-                  Time Zone: BLAH BLAH BLAH!
+                 
                 </h6>
                 <Tabs
                   defaultActiveKey="upcoming"
