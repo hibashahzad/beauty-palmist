@@ -19,7 +19,7 @@ const HomeSeller = () => {
                 </div>
               </div>
               <div>
-                <button type="button" class="btn btn-outline-light forwardbtn">
+                <button type="button" class="btn btn-outline-light forwardbtn" onClick={()=>move("MyBookings")}>
                   <i class="fa-solid fa-arrow-right-long"></i>
                 </button>
               </div>
