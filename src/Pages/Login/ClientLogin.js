@@ -2,16 +2,30 @@ import React from "react";
 import classes from "./Login.module.css";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+import UerServices from "../../Services/services/UserServices";
+import { error, success } from "../../utilties/Messagehandler";
+import { useAuth } from "../../Services/provideMain";
 const ClientLogin = () => {
   let navigate = useNavigate();
+  let { login } = useAuth();
   let Business = () => {
     navigate("/Business");
   };
-  let Select = () => {
-    navigate("/Selection ");
-  };
+
   let Services = () => {
     navigate("/Home ");
+  };
+  const handleFormSubmit = async (values, { setSubmitting }) => {
+    try {
+      const data = await UerServices.login(values.email, values.password);
+      success(data.message);
+      setSubmitting(false);
+      login();
+    } catch (e) {
+      error(e.error);
+    }
   };
   return (
     <div class={`${classes[`main-container`]}`}>
@@ -54,45 +68,58 @@ const ClientLogin = () => {
                     <i class="fa fa-twitter fa-fw"></i> Login with Twitter
                   </a>
                 </div>
-                <form>
-                  <h2>Login with email</h2>
-                  <div class="form-group">
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
-                    />
-                  </div>
-                  <div class="form-check">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      id="exampleCheck1"
-                    />
-                    <label
-                      class={` form-check-label ${classes.remember}`}
-                      for="exampleCheck1"
-                    >
-                      Remember Me
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    onClick={(e) => Services()}
-                    class={`btn btn-primary ${classes[`login-btn`]}`}
-                  >
-                    Login
-                  </button>
-                </form>{" "}
+                <h2>Login with email</h2>
+                <Formik
+                  validationSchema={Yup.object().shape({
+                    email: Yup.string()
+                      .email("Invalid email address format")
+                      .required("Email is required"),
+                    password: Yup.string()
+                      .min(3, "Password must be 3 characters at minimum")
+                      .required("Password is required"),
+                  })}
+                  initialValues={{ email: "", password: "" }}
+                  onSubmit={handleFormSubmit}
+                >
+                  {({ values, isSubmitting, validateForm, setTouched }) => (
+                    <Form>
+                      <div class="form-group">
+                        <Field
+                          name="email"
+                          type="email"
+                          placeholder="Enter email"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="email"
+                          className="errorField"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <Field
+                          name="password"
+                          type="text"
+                          placeholder="password"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="password"
+                          className="errorField"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        // onClick={(e) => Services()}
+                        class={`btn btn-primary ${classes[`login-btn`]}`}
+                      >
+                        {isSubmitting ? "Please wait..." : "Login"}
+                      </button>
+                    </Form>
+                  )}
+                </Formik>
               </div>
             </div>
           </div>
