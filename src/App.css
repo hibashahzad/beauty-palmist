@@ -11,6 +11,10 @@ h3 {
 .errorField {
   color: red;
 }
+.bolds{
+  font-weight: bold !important;
+  color: black;
+}
 
 .errorBackground {
   background-color: indianred;
@@ -22,6 +26,7 @@ h3,
 h4,
 h5 {
   font-weight: 500px !important;
+  font-family: 'Roboto', sans-serif;
 }
 .badge {
   font-size: 25px;
@@ -90,7 +95,8 @@ border-radius:3px;
   margin-top: 10px
 }
 .form-group {
-  margin-top: 20px !important;
+  margin-top: 30px !important;
+  font-family: 'Roboto', sans-serif;
 }
 .form-check {
   margin-top: 10px !important;
@@ -103,6 +109,8 @@ border-radius:3px;
 .form-control {
   border-radius: 80px !important;
   border: 2px solid silver !important;
+  font-family: 'Roboto', sans-serif;
+ 
 }
 h1 {
   text-align: center !important;
@@ -132,11 +140,15 @@ h1 {
 }
 .navbar-light .navbar-toggler {
 color:white !important;
+font-family: 'Roboto', sans-serif;
 background-color:white
 }
 .cardb{
   padding: 6px;
   border: 3px solid purple;
+}
+.ff{
+  background:rgba(255, 255, 255, 0.8) !important;
 }
 .form-control-borderless {
   border: none;
@@ -147,3 +159,12 @@ background-color:white
   outline: none;
   box-shadow: none;
 }
+.txt{
+  text-decoration: underline;
+  text-decoration-color: #0078ff; 
+  text-underline-position: under;
+  }
+  .cards-img{
+  max-width: 40% !important;  	
+  margin-top: 30px !important;
+  }

@@ -8,9 +8,13 @@ import {
 import React from "react";
 import classes from "./Header.module.css";
 import { Navigate, useNavigate } from "react-router-dom";
+import UerServices from "./../../Services/services/UserServices";
+import { useAuth } from "../../Services/provideMain";
 
 const Header = () => {
   const naviagte = useNavigate();
+  let { state } = useAuth();
+
   const move = (name) => {
     naviagte(name);
   };
@@ -58,56 +62,65 @@ const Header = () => {
             >
               Palmist Quiz
             </Nav.Link>
+            {!state.auth ? (
             <Nav.Link
               className={`${classes.white} normal1`}
               onClick={() => move("/")}
             >
               Login
             </Nav.Link>
-
+            ): <Nav.Link
+            className={`${classes.white} normal1`}
+            onClick={() => move("/")}
+          >
+            Log Out
+          </Nav.Link>}
+                  {!state.auth && (
             <Nav.Link
               className={`${classes.white} normal1`}
               onClick={() => move("/ClientR")}
             >
               Sign up
             </Nav.Link>
+                )}
           </Nav>
         </Navbar.Collapse>
+        {state.auth && (
+          <div className={classes.profile}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <i
+                class="fa fa-home fa-fw"
+                style={{
+                  fontSize: "30px",
+                  border: "2px solid blue",
+                  borderRadius: "30px",
+                  backgroundColor: "#689ADE",
+                }}
+              ></i>
 
-        <div className={classes.profile}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <i
-              class="fa fa-home fa-fw"
-              style={{
-                fontSize: "30px",
-                border: "2px solid blue",
-                borderRadius: "30px",
-                backgroundColor: "#689ADE",
-              }}
-            ></i>
-
-            <DropdownButton
-              id="dropdown-basic-button"
-              title="Awais Shahbaz"
-              className="drop"
-            >
-              <Dropdown.Item onClick={() => move("/MyBooking")}>
-                My Bookings
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
-            </DropdownButton>
+              <DropdownButton
+                id="dropdown-basic-button"
+                title={UerServices.getloggedInUser()?.name}
+                className="drop"
+              >
+                <Dropdown.Item onClick={() => move("/MyBooking")}>
+                  My Bookings
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
+              </DropdownButton>
+            </div>
+            <div>
+              {" "}
+              <button
+                className="btn btn-dark mt-2"
+                style={{ display: "block" }}
+                onClick={() => move("/MyBooking")}
+              >
+                My Booking
+              </button>
+            </div>
           </div>
-          <div>
-            {" "}
-            <button
-              className="btn btn-dark w-75"
-              style={{ display: "block" }}
-              onClick={() => move("/MyBooking")}
-            >
-              My Booking
-            </button>
-          </div>
-        </div>
+        )}
       </Navbar>
     </Container>
   );

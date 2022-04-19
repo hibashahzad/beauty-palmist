@@ -13,18 +13,18 @@ class UserServices extends GenericServices {
         });
     });
 
-  Register = (name, email, password, confirmpassword, phoneNo) =>
+  Register = (name, email, password, confirmPassword, phoneNo) =>
     new Promise((resolve, reject) => {
       this.post("users/register", {
         password,
         email,
         name,
-        confirmpassword,
+        confirmPassword,
         phoneNo,
       })
         .then((res) => {
-          localStorage.setItem("Token", res.token);
-          resolve(res.token);
+          
+          resolve(res);
         })
         .catch((error) => {
           reject(error);
@@ -34,6 +34,7 @@ class UserServices extends GenericServices {
     localStorage.setItem("Token", "");
   };
   isloggedIn = () => {
+    console.log(localStorage.getItem("Token") ? true : false);
     return localStorage.getItem("Token") ? true : false;
   };
   getloggedInUser = () => {

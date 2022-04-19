@@ -1,7 +1,8 @@
 .LoginCard {
   border-radius: 20px;
   margin-top: 20px;
-  width: 60%;
+  width: 70%;
+  background:rgba(255, 255, 255, 0.5) !important;
 }
 
 .login {
@@ -32,6 +33,7 @@
 .main {
   height: 100%;
   padding: 50px 0px;
-  background-image: url("https://static.wixstatic.com/media/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg/v1/fill/w_1349,h_622,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg");
+  /* background-image: url("https://static.wixstatic.com/media/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg/v1/fill/w_1349,h_622,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_39eb5581b30f41099a77bce7636c50f6~mv2.jpg"); */
+  background-image: url("https://static.wixstatic.com/media/11062b_f68602886d71455a85a9705d586b75a0~mv2.jpg/v1/fill/w_1895,h_933,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/11062b_f68602886d71455a85a9705d586b75a0~mv2.jpg");
   background-size: cover;
 }

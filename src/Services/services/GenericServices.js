@@ -7,7 +7,7 @@ class GenericServices {
       axios
         .get(url)
         .then((res) => {
-          resolve(res.data.datatoRetuen);
+          resolve(res.data);
         })
         .catch((err) => {
           reject(err.response.data);
@@ -18,7 +18,8 @@ class GenericServices {
       axios
         .post(url, data)
         .then((res) => {
-          resolve(res.data.datatoRetuen);
+     
+          resolve(res.data);
         })
         .catch((err) => {
           reject(err.response.data);
@@ -29,7 +30,7 @@ class GenericServices {
       axios
         .delete(url)
         .then((res) => {
-          resolve(res.data.datatoRetuen);
+          resolve(res.data);
         })
         .catch((err) => {
           reject(err.response.data);
@@ -41,7 +42,7 @@ class GenericServices {
       axios
         .put(url, data)
         .then((res) => {
-          resolve(res.data.datatoRetuen);
+          resolve(res.data);
         })
         .catch((err) => {
           reject(err.response.data);

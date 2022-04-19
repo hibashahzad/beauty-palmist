@@ -10,12 +10,14 @@ import { MainProvide } from "./Services/provideMain";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MainProvide>
+ 
       <BrowserRouter>
+      <MainProvide>
         <ToastContainer />
         <App />
+        </MainProvide>
       </BrowserRouter>
-    </MainProvide>
+
   </React.StrictMode>,
   document.getElementById("root")
 );

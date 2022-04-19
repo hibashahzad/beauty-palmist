@@ -4,6 +4,7 @@
   -webkit-background-clip: padding-box !important; /* for Safari */
   background-clip: padding-box !important;
   transition: 1s all;
+  background:rgba(255, 255, 255, 0.8) !important;
 }
 .businessCard {
   width: 85% !important;
@@ -11,6 +12,7 @@
   -webkit-background-clip: padding-box !important; /* for Safari */
   background-clip: padding-box !important;
   transition: 1s all;
+  background:rgba(255, 255, 255, 0.8) !important;
 }
 .main {
   height: 100%;

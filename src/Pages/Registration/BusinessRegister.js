@@ -9,7 +9,7 @@ const BRegister = () => {
     <div className={classes.main}>
       <div class="container">
         <h1 className={classes.head1}>Business Sign Up</h1>
-        <div class="card">
+        <div class="card ff">
           <div class="card-body">
             <form>
               <div class="row">

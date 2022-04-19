@@ -1,13 +1,33 @@
 import React from "react";
 import classes from "./Services.module.css";
 import { useNavigate } from "react-router-dom";
+import Category from './../../Services/services/CategoryServices';
+import { error } from './../../utilties/Messagehandler';
 const Services = () => {
   let navigate = useNavigate();
+  let [cat ,setCat]=React.useState([]);
   let Client = () => {
     navigate("/Category");
   };
+  React.useEffect(()=>{
+    getcate();
+     
+    
+  },[])
+  const getcate=async()=>{
+    try{
+    let result=await Category.getCategory();
+    setCat(result.category);
+    }
+    catch(e){
+      error(e.error)
+    }
+  }
+
   return (
     <div class={`py-5 ${classes.main}`}>
+      {cat.length>0&&
+      <>
       <h1 class={classes.head1}>Services</h1>
       <div class={`${classes.bgcolor} container m-auto`}>
         <div
@@ -15,9 +35,10 @@ const Services = () => {
             position: "relative",
             width: "70%",
             margin: "auto",
+           
           }}
         >
-          <div class="row  d-flex justify-content-between m-auto py-5  ">
+          <div class="row  d-flex justify-content-between m-auto py-5  " >
             <div class="col-lg-5 m-auto py-lg-0 py-5">
               <div class={`${classes.servicecard} card m-auto`}>
                 <div class={`${classes.servicec} card-block`}>
@@ -33,7 +54,7 @@ const Services = () => {
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
-                      Salons
+                    {cat[0].name}
                     </button>
                   </div>
                 </div>
@@ -53,7 +74,7 @@ const Services = () => {
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
-                      Salons
+                    {cat[1].name}
                     </button>
                   </div>
                 </div>
@@ -74,7 +95,7 @@ const Services = () => {
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
-                      Salons
+                  {cat[2].name}
                     </button>
                   </div>
                 </div>
@@ -93,7 +114,7 @@ const Services = () => {
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
-                      Salons
+                     {cat[3].name}
                     </button>
                   </div>
                 </div>
@@ -102,7 +123,9 @@ const Services = () => {
           </div>
         </div>
       </div>
+      </>}
     </div>
+
   );
 };
 

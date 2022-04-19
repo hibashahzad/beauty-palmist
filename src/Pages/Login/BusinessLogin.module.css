@@ -1,7 +1,8 @@
 .LoginCard {
   border-radius: 20px !important;
-
+padding: 10px;
   width: 70% !important;
+  background:rgba(255, 255, 255, 0.5) !important;
 }
 .z {
   margin-left: 20px;

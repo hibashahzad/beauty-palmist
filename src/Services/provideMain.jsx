@@ -3,23 +3,33 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UerServices from "./services/UserServices";
 
+import  jwt_decode  from 'jwt-decode';
+
 export const User = React.createContext("");
 
 export const Reducer = (state, action) => {
   // eslint-disable-next-line default-case
   switch (action.type) {
     case "Login":
-      return { ...state, Token: action.payload };
+      return { ...state, user: action.user,auth:action.auth };
   }
 };
 const MainProvide = ({ children }) => {
   const navigate = useNavigate();
-  const login = () => {
-    dispatch({ type: "Login", payload: true });
+
+  const login = (token) => {
+    var decoded ;
+    if (token) {
+      decoded=jwt_decode(token);
+     
+    }
+    dispatch({ type: "Login", auth: true ,user:decoded});
     navigate("/home");
   };
   const init = {
-    Token: UerServices.isloggedIn(),
+    auth: UerServices.isloggedIn(),
+    user:UerServices.getloggedInUser()
+
   };
   const [state, dispatch] = React.useReducer(Reducer, init);
 

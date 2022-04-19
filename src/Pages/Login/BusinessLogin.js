@@ -43,17 +43,10 @@ const BusniessLogin = () => {
                 </div>
               </div>
               <div class="card-body">
-                <h2>Login</h2>
-                <div class={` ${classes[`social-btns`]}`}>
-                  <a href="#" class={`${classes.fb} btn`}>
-                    <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-                  </a>
-                  <a href="#" class={`${classes.twitter} btn`}>
-                    <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-                  </a>
-                </div>
+              
+               
                 <form>
-                  <h2>Login with email</h2>
+                  <h2>Login</h2>
                   <div class="form-group">
                     <input
                       type="email"
@@ -65,7 +58,7 @@ const BusniessLogin = () => {
                   <div class="form-group">
                     <input
                       type="password"
-                      class="form-control"
+                      class="form-control mb-4"
                       id="exampleInputPassword1"
                       placeholder="Password"
                     />
@@ -79,7 +72,7 @@ const BusniessLogin = () => {
                     Login
                   </button>
                   <h3>
-                    Don't have an account? <i>Sign Up</i>
+                    Don't have an account? <i className="bolds">Sign Up</i>
                   </h3>
                 </form>{" "}
               </div>
