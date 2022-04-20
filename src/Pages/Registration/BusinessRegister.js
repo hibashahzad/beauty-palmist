@@ -38,14 +38,29 @@ const BRegister = () => {
                       placeholder="Location, Address"
                     />
                   </div>
-                  <label class={classes.lib}>Add Logo</label>
-                  <div class="custom-file">
+                  <div class="form-group">
                     <input
-                      type="file"
-                      class="custom-file-input"
-                      id="customFile"
+                      type="password"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Password"
                     />
-                    <label class="custom-file-label" for="customFile"></label>
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Phoneno"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="exampleInputPassword1"
+                      placeholder="Name"
+                    />
                   </div>
                   <label class={classes.lib}>
                     Select Your Service Category
@@ -136,17 +151,7 @@ const BRegister = () => {
                     />
                     <label class="custom-file-label" for="customFile"></label>
                   </div>
-                  <label class={classes.lib}>
-                    Attach Documents (If registered)
-                  </label>
-                  <div class="custom-file">
-                    <input
-                      type="file"
-                      class="custom-file-input"
-                      id="customFile"
-                    />
-                    <label class="custom-file-label" for="customFile"></label>
-                  </div>
+                 
 
                   <div class="form-group">
                     <input
@@ -169,6 +174,7 @@ const BRegister = () => {
                     placeholder="Give description about your services, experience and achievements"
                   />
                 </div>
+               
               </div>
             </form>
             <div className="text-center">

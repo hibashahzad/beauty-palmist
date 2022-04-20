@@ -168,3 +168,15 @@ background-color:white
   max-width: 40% !important;  	
   margin-top: 30px !important;
   }
+  .adjustImage{
+    width:120px;
+    height: 100px;
+  }
+  .centers{
+    display: block;
+  position: fixed;
+  z-index: 1031; /* High z-index so it is on top of the page */
+  top: 50%;
+  right: 50%; 
+  
+  }

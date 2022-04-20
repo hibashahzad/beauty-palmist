@@ -167,7 +167,7 @@ const Home = () => {
                         </div>
                         <div class="card-body">
                            <h5 class="card-title text-center font-weight-bolder">Name</h5>
-                           <h6 class="text-center font-weight-normal text-muted">Estimator</h6>
+                           <h6 class="text-center font-weight-normal text-muted">Beauty Expert</h6>
                            <p class="card-text text-center font-weight-normal text-dark p-3">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                          
                         </div>

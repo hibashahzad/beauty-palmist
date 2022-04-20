@@ -30,7 +30,7 @@ export default function MainRoutes() {
         <Route path="/BRegister" element={<BRegister />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/Category" element={<SubCat />} />
+        <Route path="/Category/:id" element={<SubCat />} />
         <Route path="/List" element={<ServiceList />} />
         <Route path="/SingleService" element={<SingleService />} />
         <Route path="/Palmist" element={<PCategory />} />

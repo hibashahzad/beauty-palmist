@@ -6,8 +6,8 @@ import { error } from './../../utilties/Messagehandler';
 const Services = () => {
   let navigate = useNavigate();
   let [cat ,setCat]=React.useState([]);
-  let Client = () => {
-    navigate("/Category");
+  let Client = (navi) => {
+    navigate(navi);
   };
   React.useEffect(()=>{
     getcate();
@@ -50,7 +50,7 @@ const Services = () => {
                   />
                   <div class={`${classes.serviceb} card-body`}>
                     <button
-                      onClick={() => Client("/Category")}
+                      onClick={() => Client("/Category/"+ cat[0]._id)}
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
@@ -71,6 +71,7 @@ const Services = () => {
                   />
                   <div class={`${classes.serviceb} card-body`}>
                     <button
+                       onClick={() => Client("/Category/"+ cat[1]._id)}
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
@@ -92,6 +93,7 @@ const Services = () => {
                   />
                   <div class={`${classes.serviceb} card-body`}>
                     <button
+                     onClick={() => Client("/Category/"+ cat[2]._id)}
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >
@@ -111,6 +113,7 @@ const Services = () => {
                   />
                   <div class={`${classes.serviceb} card-body`}>
                     <button
+                     onClick={() => Client("/Category/"+ cat[3]._id)}
                       type="button"
                       class={`btn btn-outline-dark ${classes.servicebtn}`}
                     >

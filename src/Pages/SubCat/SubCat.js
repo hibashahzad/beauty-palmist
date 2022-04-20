@@ -1,8 +1,33 @@
 import React from "react";
 import classes from "./SubCat.module.css";
 import { useNavigate } from "react-router-dom";
+import SubCategory from "./../../Services/services/subCategorybyCategory";
+import { useParams } from "react-router-dom";
+import { error } from "./../../utilties/Messagehandler";
+import { urlImage } from "./../../Services/url";
+import SubCate from './../../Components/SubCategory/SubCategory';
 const SubCat = () => {
   let navigate = useNavigate();
+  let { id } = useParams();
+  const [subCat, setSubCat] = React.useState([]);
+  const [loading, setloading] = React.useState(false);
+  React.useEffect(() => {
+    getcate();
+
+    // byCategory
+  }, [id]);
+  const getcate = async () => {
+    try {
+      setloading(true);
+      let result = await SubCategory.getSubCategoryByCategory(id);
+
+      setSubCat(result.subcategory);
+      setloading(false);
+    } catch (e) {
+      error(e.error);
+    }
+  };
+
   let view = (name) => {
     navigate(name);
   };
@@ -12,43 +37,22 @@ const SubCat = () => {
         <div className={classes.header}>
           <div>
             <h1 className={`${classes.headbg}   fadeLeft `} data-t-show="0">
-              Salon Categories
+              {subCat.length>0?subCat[0].categoryId.name+" Categories": "Categories"}
             </h1>
           </div>
         </div>
-
+{!loading?
         <div class="row" id="Services">
-          {new Array(5).fill(0).map(() => (
-            <div class="col-md-4  text-center flipY  ">
-              <div
-                class={`card shadow p-3 mb-5 bg-white rounded ${classes.bordersset}`}
-                data-t-show="1"
-              >
-                <div class="card-body">
-                  <div class="card-img-top">
-                    <img
-                      className="w-50"
-                      src="./SERVICES/SALON/Beauty.png"
-                      alt=""
-                    />
-                  </div>
-
-                  <h2 class={`card-title ${classes.head1}`}>Beauty Services</h2>
-                  <p class="card-text text-muted py-2 fst-italic">
-                    Your beauty answers are just a few questions away!
-                  </p>
-                  <button
-                    onClick={() => view("/List")}
-                    type="submit"
-                    class={`btn btn-primary ${classes[`login-btn`]}`}
-                  >
-                    View <i class="fa fa-arrow-right ps-2"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+          {subCat.length > 0 ? (
+            subCat.map((val) => (
+           <SubCate val={val}/>
+            ))
+          ) : (
+            <div className="text-center">Not SubCategories Available</div>
+          )}
+        </div>:<div class="spinner-border text-primary text-center centers" role="status">
+  <span class="sr-only">Loading...</span>
+</div>}
       </div>
     </div>
   );
