@@ -13,7 +13,9 @@ const ClientLogin = () => {
   let Business = () => {
     navigate("/Business");
   };
-
+  const move = (name) => {
+    navigate(name);
+  };
   let Services = () => {
     navigate("/Home ");
   };
@@ -60,16 +62,13 @@ const ClientLogin = () => {
               </div>
               <div class="card-body">
                 <h2>Login</h2>
-               
-          
+
                 <Formik
                   validationSchema={Yup.object().shape({
                     email: Yup.string()
                       .email("Invalid email address format")
                       .required("Email is required"),
-                    password: Yup.string()
-            
-                      .required("Password is required"),
+                    password: Yup.string().required("Password is required"),
                   })}
                   initialValues={{ email: "", password: "" }}
                   onSubmit={handleFormSubmit}
@@ -111,8 +110,11 @@ const ClientLogin = () => {
                         {isSubmitting ? "Please wait..." : "Login"}
                       </button>
                       <h3>
-                    Don't have an account? <i className="bolds">Sign Up</i>
-                  </h3>
+                        Don't have an account?{" "}
+                        <i className="bolds" onClick={() => move("/Selection")}>
+                          Sign Up
+                        </i>
+                      </h3>
                     </Form>
                   )}
                 </Formik>

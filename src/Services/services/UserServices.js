@@ -13,7 +13,15 @@ class UserServices extends GenericServices {
         });
     });
 
-  Register = (name, email, password, confirmPassword, phoneNo) =>
+  Register = (
+    name,
+    email,
+    password,
+    confirmPassword,
+    phoneNo,
+    role = "user",
+    status = 0
+  ) =>
     new Promise((resolve, reject) => {
       this.post("users/register", {
         password,
@@ -21,9 +29,10 @@ class UserServices extends GenericServices {
         name,
         confirmPassword,
         phoneNo,
+        role,
+        status,
       })
         .then((res) => {
-          
           resolve(res);
         })
         .catch((error) => {

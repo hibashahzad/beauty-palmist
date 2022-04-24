@@ -73,3 +73,6 @@ code {
   .colo{
 color: white;
   }
+  .bolds{
+    cursor: pointer;
+  }

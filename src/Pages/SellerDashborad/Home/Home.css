@@ -5,7 +5,7 @@
     margin: 30px
 }
 .cardBookings{
-    background-image: linear-gradient(to right, pink , white);
+    background-image: linear-gradient(to right, rgb(177, 136, 146) , rgb(159, 148, 124));
     color: white;
     height: 300px;
     width: 80%;
@@ -17,7 +17,7 @@
     flex-direction: column;
 justify-content: space-between;}
 .cardServices{
-    background-image: linear-gradient(to right, teal , cyan);
+    background-image: linear-gradient(to right, rgb(159, 100, 128) , rgb(79, 10, 64));
     color: white;
     height: 300px;
     width: 80%;
@@ -30,7 +30,7 @@ justify-content: space-between;}
 justify-content: space-between;
 }
 .cardSettings{
-    background-image: linear-gradient(to right, greenyellow , white);
+    background-image: linear-gradient(to right, rgb(234, 47, 255) , rgb(45, 46, 46));
     color: white;
     height: 300px;
     width: 80%;

@@ -18,7 +18,17 @@ class GenericServices {
       axios
         .post(url, data)
         .then((res) => {
-     
+          resolve(res.data);
+        })
+        .catch((err) => {
+          reject(err.response.data);
+        });
+    });
+  postconfig = (url, data, config) =>
+    new Promise((resolve, reject) => {
+      axios
+        .post(url, data, config)
+        .then((res) => {
           resolve(res.data);
         })
         .catch((err) => {

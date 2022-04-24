@@ -19,7 +19,7 @@ const Header = () => {
     naviagte(name);
   };
   return (
-    <Container style={{ marginTop: "14px", paddingBottom: "30px" }}>
+    <Container style={{ marginTop: "14px", paddingBottom: "10px" }}>
       <Navbar
         className={classes.bgnavbar}
         expand="lg"
@@ -43,49 +43,49 @@ const Header = () => {
         <Navbar.Toggle aria-controls="navbarScroll" className={classes.small} />
 
         <Navbar.Collapse id="navbarScroll" className={classes.set}>
-          <Nav className="my-lg-0  mt-5 pt-5  ">
-            <Nav.Link
-              className={`${classes.white} normal1`}
-              onClick={() => move("/Home")}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              className={`${classes.white} normal1`}
-              onClick={() => move("/Services")}
-            >
-              Services
-            </Nav.Link>
-            <Nav.Link
-              className={`${classes.white} normal1`}
-              onClick={() => move("/Palmist")}
-            >
-              Palmist Quiz
-            </Nav.Link>
-            {!state.auth ? (
-            <Nav.Link
-              className={`${classes.white} normal1`}
-              onClick={() => move("/")}
-            >
-              Login
-            </Nav.Link>
-            ): <Nav.Link
-            className={`${classes.white} normal1`}
-            onClick={() => move("/")}
-          >
-            Log Out
-          </Nav.Link>}
-                  {!state.auth && (
-            <Nav.Link
-              className={`${classes.white} normal1`}
-              onClick={() => move("/ClientR")}
-            >
-              Sign up
-            </Nav.Link>
-                )}
-          </Nav>
+          {state.user?.role != "bussness" ? (
+            <Nav className="my-lg-0  mt-5 pt-5  ">
+              <Nav.Link
+                className={`${classes.white} normal1`}
+                onClick={() => move("/")}
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link
+                className={`${classes.white} normal1`}
+                onClick={() => move("/Services")}
+              >
+                Services
+              </Nav.Link>
+              <Nav.Link
+                className={`${classes.white} normal1`}
+                onClick={() => move("/Palmist")}
+              >
+                Palmist Quiz
+              </Nav.Link>
+              {!state.auth ? (
+                <Nav.Link
+                  className={`${classes.white} normal1`}
+                  onClick={() => move("/Clogin")}
+                >
+                  Login
+                </Nav.Link>
+              ) : (
+                <Nav.Link
+                  className={`${classes.white} normal1`}
+                  onClick={() => move("/Clogin")}
+                >
+                  Log Out
+                </Nav.Link>
+              )}
+            </Nav>
+          ) : (
+            <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>
+              Welcome {state.user?.name} Its your Dashborad
+            </h2>
+          )}
         </Navbar.Collapse>
-        {state.auth && (
+        {state.auth ? (
           <div className={classes.profile}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <i
@@ -98,28 +98,46 @@ const Header = () => {
                 }}
               ></i>
 
-              <DropdownButton
-                id="dropdown-basic-button"
-                title={UerServices.getloggedInUser()?.name}
-                className="drop"
-              >
-                <Dropdown.Item onClick={() => move("/MyBooking")}>
-                  My Bookings
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
-              </DropdownButton>
+              {state.user?.role != "bussness" ? (
+                <DropdownButton
+                  id="dropdown-basic-button"
+                  title={UerServices.getloggedInUser()?.name}
+                  className="drop"
+                >
+                  <Dropdown.Item onClick={() => move("/MyBooking")}>
+                    My Bookings
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
+                </DropdownButton>
+              ) : (
+                <button
+                  className="btn btn-dark mx-2"
+                  style={{ display: "block" }}
+                  onClick={() => move("/MyBooking")}
+                >
+                  Log Out
+                </button>
+              )}
             </div>
-            <div>
-              {" "}
-              <button
-                className="btn btn-dark mt-2"
-                style={{ display: "block" }}
-                onClick={() => move("/MyBooking")}
-              >
-                My Booking
-              </button>
-            </div>
+            {state.user?.role != "bussness" && (
+              <div>
+                {" "}
+                <button
+                  className="btn btn-dark mt-2"
+                  style={{ display: "block" }}
+                  onClick={() => move("/MyBooking")}
+                >
+                  My Booking
+                </button>
+              </div>
+            )}
           </div>
+        ) : (
+          <img
+            src="https://static.wixstatic.com/media/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg/v1/fill/w_312,h_319,al_c,lg_1,q_80,enc_auto/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg"
+            alt="refresh page again"
+            width="10%"
+          />
         )}
       </Navbar>
     </Container>

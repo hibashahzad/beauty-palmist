@@ -1,5 +1,26 @@
 import "./AddServices.css";
+import React from "react";
+import { useAuth } from "../../../Services/provideMain";
+import SubCategory from "../../../Services/services/subCategorybyCategory";
+
 const AddServices = () => {
+  const { getUser } = useAuth();
+  const [cat, setCat] = React.useState([]);
+  const [random, setRandom] = React.useState("");
+
+  React.useEffect(() => {
+    SubCategory.getSubCategoryByCategory(getUser().categoryId?._id).then(
+      (val) => {
+        setCat(val.subcategory);
+        setRandom(
+          Math.floor(Math.random() * 1000 + 10 + Math.random() * 100 + 1) +
+            getUser().categoryId._id
+        );
+        console.log(random);
+      }
+    );
+    console.log(cat);
+  }, []);
   return (
     <div class="py-5 mainAddService">
       <div class="card addServiceCard">
@@ -24,18 +45,19 @@ const AddServices = () => {
                     class="form-control ServiceTextfield"
                     id="ServiceCategory"
                   >
-                    <option>Beauty Service</option>
-                    <option>Skin Treatment</option>
-                    <option>Hair Treatment</option>
-                    <option>Salon Product</option>
-                    <option>Other</option>
+                    <option>Select</option>
+                    {cat.length > 0 &&
+                      cat.map((subCat) => (
+                        <option value={subCat.id}>{subCat.name}</option>
+                      ))}
                   </select>
                 </div>
                 <label for="ServiceCode" class="ServiceLabel">
                   Service Code
                 </label>
                 <input
-                  type="pin"
+                  readOnly={true}
+                  value={random}
                   class="form-control ServiceTextfield"
                   id="ServiceCode"
                   placeholder="Service code will be auto-generated"
@@ -115,7 +137,7 @@ const AddServices = () => {
             <label for="ServiceDescription" class="ServiceLabel">
               Service Description'
             </label>
-            <input
+            <textarea
               type="text"
               class="form-control descriptiontextfield"
               id="ServiceDescription"

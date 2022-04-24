@@ -23,13 +23,13 @@ export default function MainRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<ClientLogin />} />
+        <Route path="/Clogin" element={<ClientLogin />} />
         <Route path="/Business" element={<BusniessLogin />} />
         <Route path="/Selection" element={<Selection />} />
         <Route path="/ClientR" element={<CRegister />} />
         <Route path="/BRegister" element={<BRegister />} />
         <Route path="/Services" element={<Services />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Category/:id" element={<SubCat />} />
         <Route path="/List" element={<ServiceList />} />
         <Route path="/SingleService" element={<SingleService />} />

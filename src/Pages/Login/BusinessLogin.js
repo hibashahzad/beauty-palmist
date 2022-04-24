@@ -1,13 +1,38 @@
 import React from "react";
 import classes from "./BusinessLogin.module.css";
 import { useNavigate } from "react-router-dom";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+import UerServices from "../../Services/services/UserServices";
+import { error, success } from "../../utilties/Messagehandler";
+import bussnessServices from "../../Services/services/bussnessuser";
+import { useAuth } from "../../Services/provideMain";
 const BusniessLogin = () => {
   let navigate = useNavigate();
+  const { login } = useAuth();
   let Client = () => {
-    navigate("/");
+    navigate("/Clogin");
   };
   const move = (name) => {
     navigate(name);
+  };
+  const handleFormSubmit = async (values, { setSubmitting }) => {
+    try {
+      const data = await UerServices.login(values.email, values.password);
+      if (data.status == 1) {
+        bussnessServices.getBussness(data.id).then((value) => {
+          success(data.message);
+          login(data.token, "bussness", value.bussness);
+          setSubmitting(false);
+        });
+      } else if (data.status == 0) {
+        error("Your Application is Not Apporved Yet");
+      } else {
+        error("Your Application is disapproved Please Contact Admin");
+      }
+    } catch (e) {
+      error(e.error);
+    }
   };
   return (
     <div class={`${classes[`main-container`]}`}>
@@ -43,38 +68,62 @@ const BusniessLogin = () => {
                 </div>
               </div>
               <div class="card-body">
-              
-               
-                <form>
-                  <h2>Login</h2>
-                  <div class="form-group">
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="exampleInputEmail1"
-                      placeholder="Email"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <input
-                      type="password"
-                      class="form-control mb-4"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
-                    />
-                  </div>
+                <h2>Login</h2>
 
-                  <button
-                    type="submit"
-                    onClick={() => move("/Seller/Dashborad")}
-                    class={`btn btn-primary ${classes[`login-btn`]}`}
-                  >
-                    Login
-                  </button>
-                  <h3>
-                    Don't have an account? <i className="bolds">Sign Up</i>
-                  </h3>
-                </form>{" "}
+                <Formik
+                  validationSchema={Yup.object().shape({
+                    email: Yup.string()
+                      .email("Invalid email address format")
+                      .required("Email is required"),
+                    password: Yup.string().required("Password is required"),
+                  })}
+                  initialValues={{ email: "", password: "" }}
+                  onSubmit={handleFormSubmit}
+                >
+                  {({ values, isSubmitting, validateForm, setTouched }) => (
+                    <Form>
+                      <div class="form-group">
+                        <Field
+                          name="email"
+                          type="email"
+                          placeholder="Enter email"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="email"
+                          className="errorField"
+                        />
+                      </div>
+                      <div class="form-group mb-3">
+                        <Field
+                          name="password"
+                          type="text"
+                          placeholder="password"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="password"
+                          className="errorField"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        // onClick={(e) => Services()}
+                        class={`btn btn-primary ${classes[`login-btn`]}`}
+                      >
+                        {isSubmitting ? "Please wait..." : "Login"}
+                      </button>
+                      <h3>
+                        Don't have an account?{" "}
+                        <i className="bolds" onClick={() => move("/Selection")}>
+                          Sign Up
+                        </i>
+                      </h3>
+                    </Form>
+                  )}
+                </Formik>
               </div>
             </div>
           </div>
