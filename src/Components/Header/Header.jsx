@@ -13,24 +13,23 @@ import { useAuth } from "../../Services/provideMain";
 
 const Header = () => {
   const naviagte = useNavigate();
-  let { state } = useAuth();
+  let { state, handleLogout } = useAuth();
 
   const move = (name) => {
     naviagte(name);
   };
   return (
-    <Container style={{ marginTop: "14px", paddingBottom: "10px" }}>
+    <container style={{ marginTop: "14px" }}>
       <Navbar
         className={classes.bgnavbar}
         expand="lg"
-        sticky="top"
         style={{ padding: "10px" }}
       >
         <Navbar.Brand href="#" className={`d-flex ${classes.imagese}`}>
           <img
             src="https://static.wixstatic.com/media/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg/v1/fill/w_312,h_319,al_c,lg_1,q_80,enc_auto/11c705_5d07b24c70fe4634ba9f1a42ec5aa41f~mv2.jpg"
             alt="refresh page again"
-            width="50%"
+            width="40%"
           />
           <div>
             <div style={{ fontWeight: "bold" }}>Beauty Palmist</div>
@@ -73,7 +72,7 @@ const Header = () => {
               ) : (
                 <Nav.Link
                   className={`${classes.white} normal1`}
-                  onClick={() => move("/Clogin")}
+                  onClick={() => handleLogout()}
                 >
                   Log Out
                 </Nav.Link>
@@ -107,13 +106,18 @@ const Header = () => {
                   <Dropdown.Item onClick={() => move("/MyBooking")}>
                     My Bookings
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-1">Log Out</Dropdown.Item>
+                  <Dropdown.Item
+                    href="#/action-1"
+                    onClick={() => handleLogout()}
+                  >
+                    Log Out
+                  </Dropdown.Item>
                 </DropdownButton>
               ) : (
                 <button
                   className="btn btn-dark mx-2"
                   style={{ display: "block" }}
-                  onClick={() => move("/MyBooking")}
+                  onClick={() => handleLogout()}
                 >
                   Log Out
                 </button>
@@ -140,7 +144,7 @@ const Header = () => {
           />
         )}
       </Navbar>
-    </Container>
+    </container>
   );
 };
 

@@ -31,7 +31,7 @@ export default function MainRoutes() {
         <Route path="/Services" element={<Services />} />
         <Route path="/" element={<Home />} />
         <Route path="/Category/:id" element={<SubCat />} />
-        <Route path="/List" element={<ServiceList />} />
+        <Route path="/List/:id" element={<ServiceList />} />
         <Route path="/SingleService" element={<SingleService />} />
         <Route path="/Palmist" element={<PCategory />} />
         <Route path="/Quiz" element={<Quiz />} />

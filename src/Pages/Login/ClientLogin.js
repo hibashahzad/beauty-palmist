@@ -17,7 +17,7 @@ const ClientLogin = () => {
     navigate(name);
   };
   let Services = () => {
-    navigate("/Home ");
+    navigate("/");
   };
   const handleFormSubmit = async (values, { setSubmitting }) => {
     try {

@@ -28,13 +28,19 @@ const MainProvide = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(data));
       navigate("/Seller/Dashborad");
     } else {
-      navigate("/home");
+      navigate("/");
     }
   };
   const getUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user !== "null") return user;
     return null;
+  };
+  const handleLogout = () => {
+    localStorage.setItem("Token", "");
+    localStorage.setItem("user", "");
+    dispatch({ type: "Login", auth: false, user: null });
+    navigate("/");
   };
   const init = {
     auth: UerServices.isloggedIn(),
@@ -43,7 +49,9 @@ const MainProvide = ({ children }) => {
   const [state, dispatch] = React.useReducer(Reducer, init);
 
   return (
-    <User.Provider value={{ state, login, getUser }}>{children}</User.Provider>
+    <User.Provider value={{ state, login, getUser, handleLogout }}>
+      {children}
+    </User.Provider>
   );
 };
 const useAuth = () => {

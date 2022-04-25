@@ -11,6 +11,7 @@ import { useState } from "react";
 import ImageUploading from "react-images-uploading";
 const BRegister = () => {
   let navigate = useNavigate();
+
   const [initial, setInitial] = useState({
     name: "",
     email: "",
