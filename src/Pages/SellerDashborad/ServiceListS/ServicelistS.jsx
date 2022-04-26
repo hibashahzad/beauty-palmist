@@ -1,11 +1,39 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate ,useParams} from "react-router-dom";
 import classes from "./ServiceListS.module.css";
 import Rating from "react-rating";
+import { error } from './../../../utilties/Messagehandler';
+import beautyService from './../../../Services/services/Servicesbeauty';
+import { useAuth } from "../../../Services/provideMain";
+import { urlImage } from './../../../Services/url';
 const ServiceListS = () => {
+  const { state } = useAuth();
   const navigate = useNavigate();
   const SingleService = (name) => {
     navigate(name);
+  };
+
+  let { id } = useParams();
+  const [subCat, setService] = React.useState([]);
+  const [loading, setloading] = React.useState(false);
+
+
+  React.useEffect(() => {
+    getcate();
+
+    // byCategory
+  }, [id]);
+  const getcate = async () => {
+    try {
+      setloading(true);
+      let result = await beautyService.ServiceUser(state.user._id);
+
+      setService(result.userServices);
+      setloading(false);
+    } catch (e) {
+      error(e.error);
+    }
   };
   return (
     <div className={`${classes.width} container-fluid`}>
@@ -43,15 +71,15 @@ const ServiceListS = () => {
       </div>
       <div className="row">
         <div className="col-md-12">
-          {new Array(6).fill(0).map((val, index) => (
+          {subCat.map((val, index) => (
             <div className="row my-3">
               <div className={`col-md-10 ${classes.sectionset}`}>
                 <div className="row gy-2">
                   <div className="col-1 fw-bold">{index}</div>
-                  <div className="col-8 fw-bold">Hair Protein Treatment</div>
+                  <div className="col-8 fw-bold">{val.name}</div>
                   <div className="col-3">
                     <button
-                      onClick={() => SingleService("/Seller/SingleService")}
+                      onClick={() => SingleService("/SingleService")}
                       class={`btn btn-primary ${classes[`login-btn`]}`}
                     >
                       View Services<i class="fa fa-arrow-right ps-2"></i>
@@ -81,8 +109,8 @@ const ServiceListS = () => {
                         "fa fa-star fa-2x high",
                       ]}
                     />
-                    <span className="mx-2">3.0</span>
-                    <span className="mx-2">150 Ratings</span>
+                    <span className="mx-2">0.0</span>
+                    <span className="mx-2">0 Ratings</span>
                   </div>
                   <div
                     className="col-3 text-center"
@@ -99,7 +127,7 @@ const ServiceListS = () => {
               <div className="col-md-2 d-flex my-md-0 my-4">
                 <img
                   className={`${classes.circle} m-auto text-center`}
-                  src="https://static.wixstatic.com/media/11062b_a74f7392ca384dff8b5516e880f76ac3~mv2.jpg/v1/crop/x_300,y_0,w_1201,h_1201/fill/w_249,h_249,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Dying%20Hair.jpg"
+                  src={`${urlImage}${val.image}`}
                 />
               </div>
             </div>

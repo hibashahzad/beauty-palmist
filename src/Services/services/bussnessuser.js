@@ -9,6 +9,9 @@ class BussnessServices extends GenericServices {
   getBussness = (id) => {
     return this.get("Bussness/" + id);
   };
+  getBussnessOwner = (id) => {
+    return this.get("Bussness/Owner/" + id);
+  };
 }
 let bussnessServices = new BussnessServices();
 export default bussnessServices;

@@ -33,6 +33,7 @@ export default function MainRoutes() {
         <Route path="/Category/:id" element={<SubCat />} />
         <Route path="/List/:id" element={<ServiceList />} />
         <Route path="/SingleService" element={<SingleService />} />
+      
         <Route path="/Palmist" element={<PCategory />} />
         <Route path="/Quiz" element={<Quiz />} />
         <Route path="/MyBooking" element={<MyBooking />} />

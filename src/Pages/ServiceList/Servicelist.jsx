@@ -9,8 +9,8 @@ const ServiceList = () => {
   let { id } = useParams();
   const [subCat, setService] = React.useState([]);
   const [loading, setloading] = React.useState(false);
-  const SingleService = (name) => {
-    navigate(name);
+  const SingleService = (name,val) => {
+    navigate(name,{state:{val}});
   };
 
   React.useEffect(() => {
@@ -52,14 +52,14 @@ const ServiceList = () => {
                     <div className="col-8 fw-bold">{val.name}</div>
                     <div className="col-3">
                       <button
-                        onClick={() => SingleService("/SingleService")}
+                        onClick={() => SingleService("/SingleService",val)}
                         class={`btn btn-primary ${classes[`login-btn`]}`}
                       >
                         View <i class="fa fa-arrow-right ps-2"></i>
                       </button>
                     </div>
                     <div className="col-1"></div>
-                    <div className="col-11">{val.userid.name} Services</div>
+                    <div className="col-11">{val.BussnesId?.name||val.userid.name} Services</div>
                     <div className="col-1"></div>
                     <div className="col-11 fst-italic text-muted">
                       {val.detail}

@@ -1,7 +1,9 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import classes from "./SingleService.module.css";
 const SingleService = () => {
+  const {state}=useLocation();
   return (
     <div class={`py-5 ${classes.main}`}>
       <div class="container">
@@ -48,16 +50,14 @@ const SingleService = () => {
               </Carousel>
             </div>
             <div class="col-md-6">
-              <h5 class={`card-title ${classes.head5}`}>Protein Treatment</h5>
+              <h5 class={`card-title ${classes.head5}`}>{state?.val?.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
-                Dr.Fazeela Abbasi Aesthetics
+             
+                {state?.val?.BussnesId?.name}
               </h6>
               <div class="card-body">
                 <p class="card-text">
-                  Protein Treatment will nourish your hair.Protein treatments,
-                  when used in moderation, may provide the strength your hair
-                  needs to minimize dryness and damage. However, these
-                  treatments should only be used as directed.
+             {state?.val?.detail}
                 </p>
                 <div class={classes.cardbuttons}>
                   {" "}

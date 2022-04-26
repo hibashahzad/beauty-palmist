@@ -59,6 +59,8 @@ const AddServices = () => {
         formData.append("Price", values.Price);
         formData.append("image", images[0].file);
         formData.append("ServiceType", values.flexRadioDefault);
+        formData.append("BussnesId",getUser()._id);
+        
         const config = {
           headers: {
             "content-type": "multipart/form-data",

@@ -9,6 +9,10 @@ class BeautyService extends GenericServices {
   getService = (id) => {
     return this.get("service/ServiceCategory/" + id);
   };
+  ServiceUser = (id) => {
+    return this.get("service/ServiceUser/" + id);
+  };
+  
 }
 let beautyService = new BeautyService();
 export default beautyService;
