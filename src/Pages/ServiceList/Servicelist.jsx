@@ -8,6 +8,7 @@ const ServiceList = () => {
   const navigate = useNavigate();
   let { id } = useParams();
   const [subCat, setService] = React.useState([]);
+  const [ori, setOri] = React.useState([]);
   const [loading, setloading] = React.useState(false);
   const SingleService = (name,val) => {
     navigate(name,{state:{val}});
@@ -22,13 +23,24 @@ const ServiceList = () => {
     try {
       setloading(true);
       let result = await beautyService.getService(id);
-
+      console.log(result)
       setService(result.userServices);
+      setOri(result.userServices);
       setloading(false);
     } catch (e) {
       error(e.error);
     }
   };
+  const filter=(name)=>{
+   
+    if(name!=="All"){
+   console.log(name);
+    setService(ori.filter((fil)=>name==fil.ServiceType));
+    }
+    else{
+     setService([...ori]);
+    }
+  }
   return (
     <div className={`${classes.width} container-fluid`}>
       <div className="row">
@@ -36,9 +48,10 @@ const ServiceList = () => {
           <div className="shadow-lg pt-4 rounded">
             <h1 className="py-3">Sort By Price Range</h1>
             <div className="shadow-lg bg-black py-5 rounded">
-              <h2 className={classes.range}>LUXERY</h2>
-              <h2 className={classes.range}>LOW RANGE</h2>
-              <h2 className={classes.range}>ALL RANGES</h2>
+              <h2 className={classes.range} onClick={()=>filter("Luxury")}>LUXERY</h2>
+              <h2 className={classes.range} onClick={()=>filter("Affordable")}>Affordable</h2>
+              <h2 className={classes.range} onClick={()=>filter("LowCost")}>LowCost</h2>
+              <h2 className={classes.range} onClick={()=>filter("All")}>All Ranges</h2>
             </div>
           </div>
         </div>
