@@ -19,7 +19,12 @@ h3 {
 .errorBackground {
   background-color: indianred;
 }
-
+.hov:hover{
+  cursor: pointer;
+  opacity: 0.5;
+  transform: scale(1.2);
+  transition: 0.5s all;
+}
 h1,
 h2,
 h3,

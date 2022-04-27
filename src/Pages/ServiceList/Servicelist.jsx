@@ -10,8 +10,8 @@ const ServiceList = () => {
   const [subCat, setService] = React.useState([]);
   const [ori, setOri] = React.useState([]);
   const [loading, setloading] = React.useState(false);
-  const SingleService = (name,val) => {
-    navigate(name,{state:{val}});
+  const SingleService = (name, val) => {
+    navigate(name, { state: { val } });
   };
 
   React.useEffect(() => {
@@ -23,7 +23,7 @@ const ServiceList = () => {
     try {
       setloading(true);
       let result = await beautyService.getService(id);
-      console.log(result)
+      console.log(result);
       setService(result.userServices);
       setOri(result.userServices);
       setloading(false);
@@ -31,16 +31,14 @@ const ServiceList = () => {
       error(e.error);
     }
   };
-  const filter=(name)=>{
-   
-    if(name!=="All"){
-   console.log(name);
-    setService(ori.filter((fil)=>name==fil.ServiceType));
+  const filter = (name) => {
+    if (name !== "All") {
+      console.log(name);
+      setService(ori.filter((fil) => name == fil.ServiceType));
+    } else {
+      setService([...ori]);
     }
-    else{
-     setService([...ori]);
-    }
-  }
+  };
   return (
     <div className={`${classes.width} container-fluid`}>
       <div className="row">
@@ -48,10 +46,21 @@ const ServiceList = () => {
           <div className="shadow-lg pt-4 rounded">
             <h1 className="py-3">Sort By Price Range</h1>
             <div className="shadow-lg bg-black py-5 rounded">
-              <h2 className={classes.range} onClick={()=>filter("Luxury")}>LUXERY</h2>
-              <h2 className={classes.range} onClick={()=>filter("Affordable")}>Affordable</h2>
-              <h2 className={classes.range} onClick={()=>filter("LowCost")}>LowCost</h2>
-              <h2 className={classes.range} onClick={()=>filter("All")}>All Ranges</h2>
+              <h2 className={classes.range} onClick={() => filter("Luxury")}>
+                LUXERY
+              </h2>
+              <h2
+                className={classes.range}
+                onClick={() => filter("Affordable")}
+              >
+                Affordable
+              </h2>
+              <h2 className={classes.range} onClick={() => filter("LowCost")}>
+                LowCost
+              </h2>
+              <h2 className={classes.range} onClick={() => filter("All")}>
+                All Ranges
+              </h2>
             </div>
           </div>
         </div>
@@ -65,14 +74,16 @@ const ServiceList = () => {
                     <div className="col-8 fw-bold">{val.name}</div>
                     <div className="col-3">
                       <button
-                        onClick={() => SingleService("/SingleService",val)}
+                        onClick={() => SingleService("/SingleService", val)}
                         class={`btn btn-primary ${classes[`login-btn`]}`}
                       >
                         View <i class="fa fa-arrow-right ps-2"></i>
                       </button>
                     </div>
                     <div className="col-1"></div>
-                    <div className="col-11">{val.BussnesId?.name||val.userid.name} Services</div>
+                    <div className="col-11">
+                      {val.BussnesId?.name || val.userid.name} Services
+                    </div>
                     <div className="col-1"></div>
                     <div className="col-11 fst-italic text-muted">
                       {val.detail}
