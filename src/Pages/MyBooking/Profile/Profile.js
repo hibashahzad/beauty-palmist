@@ -1,7 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { useAuth } from "../../../Services/provideMain";
 import "./UserProfile.css";
 const UserProfile = () => {
+  let { state } = useAuth();
   return (
     <div class="py-5 ">
       <div class="card toppings">Profile Update</div>
@@ -18,20 +20,10 @@ const UserProfile = () => {
                 </label>
                 <input
                   type="name"
+                  value={state.user.name}
                   class="form-control "
                   id="Name"
                   placeholder="Name"
-                />
-              </div>
-              <div class="col-md-6">
-                <label for="exampleInputEmail1" class="bold">
-                  Address
-                </label>
-                <input
-                  type="address"
-                  class="form-control "
-                  id="LocationId"
-                  placeholder="Email"
                 />
               </div>
 
@@ -43,6 +35,7 @@ const UserProfile = () => {
                   type="number"
                   class="form-control "
                   id="emailId"
+                  value={state.user.phoneNo}
                   aria-describedby="emailHelp"
                   placeholder="Phoneno"
                 />
@@ -54,6 +47,7 @@ const UserProfile = () => {
 
                 <input
                   type="email"
+                  value={state.user.email}
                   class="form-control "
                   id="emailId"
                   aria-describedby="emailHelp"
