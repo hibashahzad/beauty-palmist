@@ -7,6 +7,9 @@ class SubCategoryServices extends GenericServices {
   getSubCategoryByCategory= (id) => {
     return this.get("subcategory/byCategory/"+id);
   };
+  getSubCategory= () => {
+    return this.get("subcategory");
+  };
   // deleteProduct = (_id) => {
   //   return this.delete("products/" + _id);
   // };

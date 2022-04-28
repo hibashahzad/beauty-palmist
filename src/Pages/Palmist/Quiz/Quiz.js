@@ -1,12 +1,32 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import quiz from "../../../Services/services/quiz";
 import classes from "../../Login/Login.module.css";
 
 import "./Quiz.css";
+import { error } from './../../../utilties/Messagehandler';
 const Quiz = () => {
   const naviagte = useNavigate();
   const move = (val) => naviagte("/List");
+  let { id } = useParams();
+  const [quiz, setQuiz] = React.useState([]);
+  const [loading, setloading] = React.useState(false);
+  React.useEffect(() => {
+    getcate();
 
+    // byCategory
+  }, [id]);
+  const getcate = async () => {
+    try {
+      setloading(true);
+      let result = await quiz.getQuiz(id);
+
+      setQuiz(result.quiz);
+      setloading(false);
+    } catch (e) {
+      error(e.error);
+    }
+  };
   return (
     <div class="py-5 mainquiz">
       <div class="card topquiz">
@@ -17,9 +37,9 @@ const Quiz = () => {
       <div class="card quizcard">
         <div class="col mb-4">
           <h3>Aesthetics Questionnaire Facial Treatment</h3>
-          {new Array(8).fill(0).map(() => (
+          {quiz.map((value) => (
             <div className="py-2">
-              <h5 class="quizheading">What is your skin type?</h5>
+              <h5 class="quizheading">{value.Question}</h5>
               <div class="form-check">
                 <input
                   class="form-check-input li"
@@ -28,7 +48,7 @@ const Quiz = () => {
                   id="flexRadioDefault1"
                 />
                 <label class="form-check-label la" for="flexRadioDefault1">
-                  Dry
+                {value.ANswer1}
                 </label>
               </div>
               <div class="form-check">
@@ -39,7 +59,7 @@ const Quiz = () => {
                   id="flexRadioDefault1"
                 />
                 <label class="form-check-label la" for="flexRadioDefault1">
-                  Oily
+                {value.Answer2}
                 </label>
               </div>
               <div class="form-check">
@@ -50,7 +70,7 @@ const Quiz = () => {
                   id="flexRadioDefault1"
                 />
                 <label class="form-check-label la" for="flexRadioDefault1">
-                  Combination
+                {value.ANswer3}
                 </label>
               </div>
             </div>
