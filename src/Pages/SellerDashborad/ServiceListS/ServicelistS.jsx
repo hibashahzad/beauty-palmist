@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import { Outlet, useNavigate ,useParams} from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import classes from "./ServiceListS.module.css";
 import Rating from "react-rating";
-import { error } from './../../../utilties/Messagehandler';
-import beautyService from './../../../Services/services/Servicesbeauty';
+import { error, success } from "./../../../utilties/Messagehandler";
+import beautyService from "./../../../Services/services/Servicesbeauty";
 import { useAuth } from "../../../Services/provideMain";
-import { urlImage } from './../../../Services/url';
+import { urlImage } from "./../../../Services/url";
 const ServiceListS = () => {
   const { state } = useAuth();
   const navigate = useNavigate();
@@ -16,20 +16,41 @@ const ServiceListS = () => {
 
   let { id } = useParams();
   const [subCat, setService] = React.useState([]);
-  const [loading, setloading] = React.useState(false);
 
+  const [ori, setOri] = React.useState([]);
+  const [loading, setloading] = React.useState(false);
 
   React.useEffect(() => {
     getcate();
 
     // byCategory
   }, [id]);
+  const find = (e) => {
+    setService(
+      ori.filter((fil) =>
+        fil.name.toUpperCase().includes(e.target.value.toUpperCase())
+      )
+    );
+  };
+  const remove = (id) => {
+    beautyService
+      .remServices(id)
+      .then((value) => {
+        setOri(ori.filter((rem) => rem._id != id));
+        setService(ori.filter((rem) => rem._id != id));
+        success("Delete Successfully");
+      })
+      .catch((e) => {
+        error("Cannot be deleted at that Time");
+      });
+  };
   const getcate = async () => {
     try {
       setloading(true);
       let result = await beautyService.ServiceUser(state.user._id);
 
       setService(result.userServices);
+      setOri(result.userServices);
       setloading(false);
     } catch (e) {
       error(e.error);
@@ -48,9 +69,10 @@ const ServiceListS = () => {
 
               <div class="col">
                 <input
+                  onChange={find}
                   class="form-control form-control-lg form-control-borderless"
                   type="search"
-                  placeholder="Search topics or keywords"
+                  placeholder="Search By Service Name"
                 />
               </div>
             </div>
@@ -73,7 +95,9 @@ const ServiceListS = () => {
         <div className="col-md-12">
           {subCat.map((val, index) => (
             <div className="row my-3">
-              <div className={`col-md-10 ${classes.sectionset}`}>
+              <div
+                className={`col-md-10 ${classes.sectionset} shadow-lg rounded`}
+              >
                 <div className="row gy-2">
                   <div className="col-1 fw-bold">{index}</div>
                   <div className="col-8 fw-bold">{val.name}</div>
@@ -117,14 +141,17 @@ const ServiceListS = () => {
                     style={{ fontSize: "24px" }}
                   >
                     <i
-                      class="fas fa-edit mx-2"
+                      class="fas fa-edit mx-2 hov"
                       onClick={() => SingleService("/Seller/AddServices/2")}
                     ></i>
-                    <i class="fa-solid fa-trash"></i>
+                    <i
+                      class="fa-solid fa-trash hov"
+                      onClick={() => remove(val._id)}
+                    ></i>
                   </div>
                 </div>
               </div>
-              <div className="col-md-2 d-flex my-md-0 my-4">
+              <div className="col-md-2 d-flex my-md-0 my-4  ">
                 <img
                   className={`${classes.circle} m-auto text-center`}
                   src={`${urlImage}${val.image}`}
