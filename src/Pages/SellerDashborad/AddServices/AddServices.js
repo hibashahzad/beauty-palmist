@@ -59,17 +59,17 @@ const AddServices = () => {
         formData.append("Price", values.Price);
         formData.append("image", images[0].file);
         formData.append("ServiceType", values.flexRadioDefault);
-        formData.append("BussnesId",getUser()._id);
-        
+        formData.append("BussnesId", getUser()._id);
+
         const config = {
           headers: {
             "content-type": "multipart/form-data",
           },
         };
         console.log(33544);
-        beautyService.addBussness(formData, config).then(() => {
+        beautyService.addBussness(formData, config).then((val) => {
           success("Service is added");
-          navigate("/Seller/Dashborad");
+          navigate("/Quiz/" + values.ServiceCategory, { state: { val } });
         });
       } else {
         error("Please upload Logo");

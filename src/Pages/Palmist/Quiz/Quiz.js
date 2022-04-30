@@ -1,16 +1,21 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Quizs from "../../../Services/services/quiz";
 import classes from "../../Login/Login.module.css";
 
 import "./Quiz.css";
 import { error } from "./../../../utilties/Messagehandler";
+import quizAnswer from "../../../Services/services/quizAnswer";
+import { useAuth } from "../../../Services/provideMain";
 const Quiz = () => {
   const naviagte = useNavigate();
+  const { state: data } = useLocation();
   const move = (val) => naviagte("/List");
+  const [ans, setAns] = React.useState([]);
   let { id } = useParams();
   const [quiz, setQuiz] = React.useState([]);
   const [loading, setloading] = React.useState(false);
+  let { state, handleLogout } = useAuth();
   React.useEffect(() => {
     getcate();
 
@@ -23,6 +28,36 @@ const Quiz = () => {
       setQuiz(result.quiz);
     } catch (e) {
       error(e.error);
+    }
+  };
+  const submithandler = () => {
+    try {
+      if (state?.user?.role === "bussness") {
+        quizAnswer
+          .createAnswer({
+            Answer: ans,
+            ServiceId: state.val._id,
+            Quiz: quiz._id,
+            SubCategoryId: id,
+          })
+          .then((value) => {
+            console.log(value);
+          });
+      } else {
+        naviagte("/List", { state: { ans } });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const save = (e) => {
+    const { name, value } = e.target.value;
+    if (ans.findIndex((val) => val.name === name) === -1) {
+      setAns([...ans, { [name]: value }]);
+    } else {
+      setAns(
+        ans.map((value) => (value.name == name ? { [name]: value } : value))
+      );
     }
   };
   return (
@@ -38,14 +73,15 @@ const Quiz = () => {
           {quiz.length < 1 ? (
             <h1>No quiz Available</h1>
           ) : (
-            quiz.map((value) => (
+            quiz.map((value, index) => (
               <div className="py-2">
                 <h5 class="quizheading">{value.Question}</h5>
                 <div class="form-check">
                   <input
                     class="form-check-input li"
                     type="radio"
-                    name="flexRadioDefault"
+                    onChange={save}
+                    name={`Ans${index}`}
                     id="flexRadioDefault1"
                   />
                   <label class="form-check-label la" for="flexRadioDefault1">
@@ -54,9 +90,10 @@ const Quiz = () => {
                 </div>
                 <div class="form-check">
                   <input
+                    onChange={save}
                     class="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
+                    name={`Ans${index}`}
                     id="flexRadioDefault1"
                   />
                   <label class="form-check-label la" for="flexRadioDefault1">
@@ -67,7 +104,8 @@ const Quiz = () => {
                   <input
                     class="form-check-input "
                     type="radio"
-                    name="flexRadioDefault"
+                    onChange={save}
+                    name={`Ans${index}`}
                     id="flexRadioDefault1"
                   />
                   <label class="form-check-label la" for="flexRadioDefault1">
@@ -89,8 +127,8 @@ const Quiz = () => {
         </div>
 
         <button
-          type="submit"
-          onClick={() => move()}
+          type="button"
+          onClick={() => submithandler()}
           class={`btn btn-primary ${classes[`login-btn`]}`}
         >
           Recommendation
