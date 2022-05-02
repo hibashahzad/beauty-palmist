@@ -36,27 +36,36 @@ const Quiz = () => {
         quizAnswer
           .createAnswer({
             Answer: ans,
-            ServiceId: state.val._id,
-            Quiz: quiz._id,
+            ServiceId: data.val.userServices._id,
+
             SubCategoryId: id,
           })
           .then((value) => {
-            console.log(value);
+            naviagte("/Seller/ServiceListS");
           });
       } else {
-        naviagte("/List", { state: { ans } });
+        naviagte("/List", {
+          state: {
+            ans,
+
+            SubCategoryId: id,
+          },
+        });
       }
     } catch (e) {
-      console.log(e);
+      error(e.error);
     }
   };
   const save = (e) => {
-    const { name, value } = e.target.value;
+    const { name, value } = e.target;
+
     if (ans.findIndex((val) => val.name === name) === -1) {
-      setAns([...ans, { [name]: value }]);
+      setAns([...ans, { [name]: value, name: name, answer: value }]);
     } else {
       setAns(
-        ans.map((value) => (value.name == name ? { [name]: value } : value))
+        ans.map((valu) =>
+          valu.name == name ? { ...valu, [name]: value, answer: value } : valu
+        )
       );
     }
   };
@@ -80,8 +89,9 @@ const Quiz = () => {
                   <input
                     class="form-check-input li"
                     type="radio"
+                    value={value.Answer1}
                     onChange={save}
-                    name={`Ans${index}`}
+                    name={value.Question}
                     id="flexRadioDefault1"
                   />
                   <label class="form-check-label la" for="flexRadioDefault1">
@@ -93,7 +103,8 @@ const Quiz = () => {
                     onChange={save}
                     class="form-check-input"
                     type="radio"
-                    name={`Ans${index}`}
+                    value={value.Answer2}
+                    name={value.Question}
                     id="flexRadioDefault1"
                   />
                   <label class="form-check-label la" for="flexRadioDefault1">
@@ -105,7 +116,8 @@ const Quiz = () => {
                     class="form-check-input "
                     type="radio"
                     onChange={save}
-                    name={`Ans${index}`}
+                    value={value.Answer3}
+                    name={value.Question}
                     id="flexRadioDefault1"
                   />
                   <label class="form-check-label la" for="flexRadioDefault1">
@@ -115,7 +127,7 @@ const Quiz = () => {
               </div>
             ))
           )}
-          <select
+          {/* <select
             class="form-select quizheading"
             aria-label="Default select example"
           >
@@ -123,7 +135,7 @@ const Quiz = () => {
             <option value="1">12-24</option>
             <option value="2">24-40</option>
             <option value="3">40-60</option>
-          </select>
+          </select> */}
         </div>
 
         <button
@@ -131,7 +143,7 @@ const Quiz = () => {
           onClick={() => submithandler()}
           class={`btn btn-primary ${classes[`login-btn`]}`}
         >
-          Recommendation
+          {state?.user?.role === "bussness" ? "Submit" : "Recommendation"}
         </button>
       </div>
     </div>

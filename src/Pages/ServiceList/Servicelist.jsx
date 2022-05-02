@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams, useLocation } from "react-router-dom";
+import quizAnswer from "../../Services/services/quizAnswer";
 import beautyService from "../../Services/services/Servicesbeauty";
 import { urlImage } from "../../Services/url";
 import { error } from "../../utilties/Messagehandler";
@@ -10,12 +11,44 @@ const ServiceList = () => {
   const [subCat, setService] = React.useState([]);
   const [ori, setOri] = React.useState([]);
   const [loading, setloading] = React.useState(false);
+  const { state } = useLocation();
+  const ispalmist = !id;
   const SingleService = (name, val) => {
     navigate(name, { state: { val } });
   };
 
   React.useEffect(() => {
-    getcate();
+    if (ispalmist) {
+      let recom = [];
+      setloading(true);
+      quizAnswer.getAnswer(state.SubCategoryId).then((val) => {
+        state.ans.map((userans) =>
+          recom.push(
+            ...val.quiz.filter((fil) =>
+              fil.Answer.some(
+                (finding) =>
+                  finding.answer == userans.answer &&
+                  finding.name == userans.name
+              )
+            )
+          )
+        );
+        let ids = recom
+          .filter((val, index) =>
+            recom.findIndex((value) => (value._id == val._id) != index)
+          )
+          .map((valid) => valid.ServiceId._id);
+        console.log(ids);
+        beautyService.recommendationServices({ ids: ids }).then((result) => {
+          console.log(ids);
+          setService(result.userServices);
+          setOri(result.userServices);
+          setloading(false);
+        });
+      });
+    } else {
+      getcate();
+    }
 
     // byCategory
   }, [id]);

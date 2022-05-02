@@ -4,8 +4,11 @@ class QuizAnswer extends GenericServices {
     super();
   }
 
-  createAnswer = (id, data) => {
+  createAnswer = (data) => {
     return this.post("QuizAnswer", data);
+  };
+  getAnswer = (id) => {
+    return this.get("QuizAnswer/" + id);
   };
 }
 let quizAnswer = new QuizAnswer();

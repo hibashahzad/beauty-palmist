@@ -15,6 +15,10 @@ class BeautyService extends GenericServices {
   remServices = (id) => {
     return this.delete("service/" + id);
   };
+  recommendationServices = (data) => {
+    console.log(data);
+    return this.post("service/recommendation/", data);
+  };
 }
 let beautyService = new BeautyService();
 export default beautyService;
