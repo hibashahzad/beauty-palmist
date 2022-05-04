@@ -26,9 +26,11 @@ const BusniessLogin = () => {
           setSubmitting(false);
         });
       } else if (data.status == 0) {
-        error("Your Application is Not Apporved Yet");
+        error(
+          "Your Application is Not Apporved Yet or You are not Registered as A bussnessUser"
+        );
       } else {
-        error("Your Application is disapproved Please Contact Admin");
+        error("Your Application is disapproved Please Contact Admin ");
       }
     } catch (e) {
       error(e.error);
@@ -98,7 +100,7 @@ const BusniessLogin = () => {
                       <div class="form-group mb-3">
                         <Field
                           name="password"
-                          type="text"
+                          type="password"
                           placeholder="password"
                           className="form-control"
                         />

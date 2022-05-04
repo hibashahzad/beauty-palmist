@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactPaginate from "react-paginate";
 import { Outlet, useNavigate, useParams, useLocation } from "react-router-dom";
 import quizAnswer from "../../Services/services/quizAnswer";
 import beautyService from "../../Services/services/Servicesbeauty";
@@ -7,11 +8,17 @@ import { error } from "../../utilties/Messagehandler";
 import classes from "./ServiceList.module.css";
 const ServiceList = () => {
   const navigate = useNavigate();
+  const itemsPerPage = 6;
   let { id } = useParams();
   const [subCat, setService] = React.useState([]);
   const [ori, setOri] = React.useState([]);
   const [loading, setloading] = React.useState(false);
   const { state } = useLocation();
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  // Here we use item offsets; we could also use page offsets
+  // following the API or data you're working with.
+  const [itemOffset, setItemOffset] = useState(0);
   const ispalmist = !id;
   const SingleService = (name, val) => {
     navigate(name, { state: { val } });
@@ -52,6 +59,20 @@ const ServiceList = () => {
 
     // byCategory
   }, [id]);
+  React.useEffect(() => {
+    // Fetch subCat from another resources.
+    const endOffset = itemOffset + itemsPerPage;
+
+    setCurrentItems(subCat.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(subCat.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, subCat]);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % subCat.length;
+
+    setItemOffset(newOffset);
+  };
   const getcate = async () => {
     try {
       setloading(true);
@@ -97,44 +118,65 @@ const ServiceList = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-9">
-          {subCat.length > 0 ? (
-            subCat.map((val) => (
-              <div className="row my-3">
-                <div className={`col-md-9 ${classes.sectionset}`}>
-                  <div className="row gy-2">
-                    <div className="col-1 fw-bold">1</div>
-                    <div className="col-8 fw-bold">{val.name}</div>
-                    <div className="col-3">
-                      <button
-                        onClick={() => SingleService("/SingleService", val)}
-                        class={`btn btn-primary ${classes[`login-btn`]}`}
-                      >
-                        View <i class="fa fa-arrow-right ps-2"></i>
-                      </button>
+        {!loading ? (
+          <div className="col-md-9">
+            {currentItems.length > 0 ? (
+              <>
+                {currentItems.map((val) => (
+                  <div className="row my-3">
+                    <div className={`col-md-9 ${classes.sectionset}`}>
+                      <div className="row gy-2">
+                        <div className="col-1 fw-bold">1</div>
+                        <div className="col-8 fw-bold">{val.name}</div>
+                        <div className="col-3">
+                          <button
+                            onClick={() => SingleService("/SingleService", val)}
+                            class={`btn btn-primary ${classes[`login-btn`]}`}
+                          >
+                            View <i class="fa fa-arrow-right ps-2"></i>
+                          </button>
+                        </div>
+                        <div className="col-1"></div>
+                        <div className="col-11">
+                          {val.BussnesId?.name || val.userid.name} Services
+                        </div>
+                        <div className="col-1"></div>
+                        <div className="col-11 fst-italic text-muted">
+                          {val.detail}
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-1"></div>
-                    <div className="col-11">
-                      {val.BussnesId?.name || val.userid.name} Services
-                    </div>
-                    <div className="col-1"></div>
-                    <div className="col-11 fst-italic text-muted">
-                      {val.detail}
+                    <div className="col-md-3 d-flex">
+                      <img
+                        className={`${classes.circle} m-auto text-center`}
+                        src={`${urlImage}${val.image}`}
+                      />
                     </div>
                   </div>
-                </div>
-                <div className="col-md-3 d-flex">
-                  <img
-                    className={`${classes.circle} m-auto text-center`}
-                    src={`${urlImage}${val.image}`}
-                  />
-                </div>
-              </div>
-            ))
-          ) : (
-            <h3 style={{ textAlign: "center" }}>No Services</h3>
-          )}
-        </div>
+                ))}
+
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="next"
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel="previous"
+                  renderOnZeroPageCount={null}
+                />
+              </>
+            ) : (
+              <h3 style={{ textAlign: "center" }}>No Services</h3>
+            )}
+          </div>
+        ) : (
+          <div
+            class="spinner-border text-primary text-center centers"
+            role="status"
+          >
+            <span class="sr-only">Loading...</span>
+          </div>
+        )}
       </div>
       <Outlet />
     </div>

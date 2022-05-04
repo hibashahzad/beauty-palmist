@@ -43,6 +43,7 @@ export default function MainRoutes() {
           <Route path="Profile" element={<Profile />} />
           <Route path="ServiceListS" element={<ServiceListS />} />
           <Route path="AddServices" element={<AddServices />} />
+          <Route path="AddServices" element={<AddServices />} />
           <Route path="MyBookings" element={<BookingSchedule />} />
           <Route path="AddServices/:id" element={<AddServices />} />
         </Route>

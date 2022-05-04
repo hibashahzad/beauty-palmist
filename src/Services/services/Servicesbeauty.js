@@ -19,6 +19,9 @@ class BeautyService extends GenericServices {
     console.log(data);
     return this.post("service/recommendation/", data);
   };
+  EditServices = (id, data) => {
+    return this.put("service/" + id, data);
+  };
 }
 let beautyService = new BeautyService();
 export default beautyService;

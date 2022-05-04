@@ -7,17 +7,17 @@ import reportWebVitals from "./reportWebVitals";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MainProvide } from "./Services/provideMain";
+import ServiceList from "./Pages/ServiceList/Servicelist";
 
 ReactDOM.render(
   <React.StrictMode>
- 
-      <BrowserRouter>
+    <BrowserRouter>
       <MainProvide>
         <ToastContainer />
-        <App />
-        </MainProvide>
-      </BrowserRouter>
 
+        <App />
+      </MainProvide>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

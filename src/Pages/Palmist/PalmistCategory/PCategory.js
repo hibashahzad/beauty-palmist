@@ -3,7 +3,7 @@ import React from "react";
 import SubCategory from "./../../../Services/services/subCategorybyCategory";
 import { error } from "./../../../utilties/Messagehandler";
 import { move } from "formik";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const PCategory = () => {
   const [subCat, setSubCat] = React.useState([]);
   const [loading, setloading] = React.useState(false);
@@ -14,9 +14,9 @@ const PCategory = () => {
 
     // byCategory
   }, []);
-  const move=(id)=>{
-    naviagte("/Quiz/"+id)
-  }
+  const move = (id) => {
+    naviagte("/Quiz/" + id);
+  };
   const getcate = async () => {
     try {
       const subCats = {};
@@ -45,62 +45,71 @@ const PCategory = () => {
           <h1>Palmist Categories</h1>
         </div>
       </div>
-      <div className="col">
-      {Object.entries(subCat).map(([k, v])=>
-        <>
-          <div className={`card ${classes.categorycard}`}>
-            <div className="card-body">
-              <div className="row cardrow">
-                <div className="col-md-4">
-                  <div className={classes.centeringdiv}>
-                    <i className="fa fa-scissors"></i>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className={classes.centeringdiv}>
-                    <h1>{k}</h1>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className={classes.centeringdiv}>
-                    <button
-                      className={`btn ${classes.dropdownbutton}`}
-                      type="button"
-                      data-toggle="collapse"
-                      data-target={`#${k}`}
-                    >
-                      <i className="fa-regular fa-circle-chevron-down"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {v.map((value)=>
-          <div className="collapse" id={k}>
-            <div className={`card ${classes.collapcard}`}>
-              <div className="col">
-                <div className={` row ${classes.collapeRow} `}>
-                  <div className="col-md-6">
-                    <h3>{value.name}</h3>
-                  </div>
-                  <div className="col-md-6">
-                    <button
-                      type="button"
-                      onClick={()=>move(value._id)}
-                      className={` btn ${classes.quizbtn} `}
-                    >
-                      Take Quiz <i className="fa fa-arrow-right"></i>
-                    </button>
+      {!loading ? (
+        <div className="col">
+          {Object.entries(subCat).map(([k, v]) => (
+            <>
+              <div className={`card ${classes.categorycard}`}>
+                <div className="card-body">
+                  <div className="row cardrow">
+                    <div className="col-md-4">
+                      <div className={classes.centeringdiv}>
+                        <i className="fa fa-scissors"></i>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className={classes.centeringdiv}>
+                        <h1>{k}</h1>
+                      </div>
+                    </div>
+                    <div className="col-md-4">
+                      <div className={classes.centeringdiv}>
+                        <button
+                          className={`btn ${classes.dropdownbutton}`}
+                          type="button"
+                          data-toggle="collapse"
+                          data-target={`#${k}`}
+                        >
+                          <i className="fa-regular fa-circle-chevron-down"></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          )}
-        </>
+              {v.map((value) => (
+                <div className="collapse" id={k}>
+                  <div className={`card ${classes.collapcard}`}>
+                    <div className="col">
+                      <div className={` row ${classes.collapeRow} `}>
+                        <div className="col-md-6">
+                          <h3>{value.name}</h3>
+                        </div>
+                        <div className="col-md-6">
+                          <button
+                            type="button"
+                            onClick={() => move(value._id)}
+                            className={` btn ${classes.quizbtn} `}
+                          >
+                            Take Quiz <i className="fa fa-arrow-right"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </>
+          ))}
+        </div>
+      ) : (
+        <div
+          class="spinner-border text-primary text-center centers"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
       )}
-      </div>
     </div>
   );
 };

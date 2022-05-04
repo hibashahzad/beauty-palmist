@@ -23,11 +23,14 @@ const Quiz = () => {
   }, [id]);
   const getcate = async () => {
     try {
+      setloading(true);
       let result = await Quizs.getQuiz(id);
 
       setQuiz(result.quiz);
+      setloading(false);
     } catch (e) {
       error(e.error);
+      setloading(false);
     }
   };
   const submithandler = () => {
@@ -76,58 +79,59 @@ const Quiz = () => {
           <h1>Palmist Quizz</h1>
         </div>
       </div>
-      <div class="card quizcard">
-        <div class="col mb-4">
-          <h3>Questionnaire </h3>
-          {quiz.length < 1 ? (
-            <h1>No quiz Available</h1>
-          ) : (
-            quiz.map((value, index) => (
-              <div className="py-2">
-                <h5 class="quizheading">{value.Question}</h5>
-                <div class="form-check">
-                  <input
-                    class="form-check-input li"
-                    type="radio"
-                    value={value.Answer1}
-                    onChange={save}
-                    name={value.Question}
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label la" for="flexRadioDefault1">
-                    {value.Answer1}
-                  </label>
+      {!loading ? (
+        <div class="card quizcard">
+          <div class="col mb-4">
+            <h3>Questionnaire </h3>
+            {quiz.length < 1 ? (
+              <h1>No quiz Available</h1>
+            ) : (
+              quiz.map((value, index) => (
+                <div className="py-2">
+                  <h5 class="quizheading">{value.Question}</h5>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input li"
+                      type="radio"
+                      value={value.Answer1}
+                      onChange={save}
+                      name={value.Question}
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label la" for="flexRadioDefault1">
+                      {value.Answer1}
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      onChange={save}
+                      class="form-check-input"
+                      type="radio"
+                      value={value.Answer2}
+                      name={value.Question}
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label la" for="flexRadioDefault1">
+                      {value.Answer2}
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input "
+                      type="radio"
+                      onChange={save}
+                      value={value.Answer3}
+                      name={value.Question}
+                      id="flexRadioDefault1"
+                    />
+                    <label class="form-check-label la" for="flexRadioDefault1">
+                      {value.Answer3}
+                    </label>
+                  </div>
                 </div>
-                <div class="form-check">
-                  <input
-                    onChange={save}
-                    class="form-check-input"
-                    type="radio"
-                    value={value.Answer2}
-                    name={value.Question}
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label la" for="flexRadioDefault1">
-                    {value.Answer2}
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input "
-                    type="radio"
-                    onChange={save}
-                    value={value.Answer3}
-                    name={value.Question}
-                    id="flexRadioDefault1"
-                  />
-                  <label class="form-check-label la" for="flexRadioDefault1">
-                    {value.Answer3}
-                  </label>
-                </div>
-              </div>
-            ))
-          )}
-          {/* <select
+              ))
+            )}
+            {/* <select
             class="form-select quizheading"
             aria-label="Default select example"
           >
@@ -136,16 +140,24 @@ const Quiz = () => {
             <option value="2">24-40</option>
             <option value="3">40-60</option>
           </select> */}
-        </div>
+          </div>
 
-        <button
-          type="button"
-          onClick={() => submithandler()}
-          class={`btn btn-primary ${classes[`login-btn`]}`}
+          <button
+            type="button"
+            onClick={() => submithandler()}
+            class={`btn btn-primary ${classes[`login-btn`]}`}
+          >
+            {state?.user?.role === "bussness" ? "Submit" : "Recommendation"}
+          </button>
+        </div>
+      ) : (
+        <div
+          class="spinner-border text-primary text-center centers"
+          role="status"
         >
-          {state?.user?.role === "bussness" ? "Submit" : "Recommendation"}
-        </button>
-      </div>
+          <span class="sr-only">Loading...</span>
+        </div>
+      )}
     </div>
   );
 };
