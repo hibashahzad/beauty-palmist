@@ -2,10 +2,12 @@ import { move } from "formik";
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Services/provideMain";
 import classes from "./SingleService.module.css";
 const SingleService = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  let { state: check } = useAuth();
   console.log(state);
   const move = () => {
     navigate("/Appointment", { state: { info: state.val } });
@@ -72,13 +74,15 @@ const SingleService = () => {
                   >
                     Book Now! (Calender Method)
                   </button> */}
-                  <button
-                    onClick={() => move()}
-                    type="button"
-                    class={`btn ${classes.detailservicebtn} `}
-                  >
-                    Book Now! (Manual Input)
-                  </button>
+                  {check.user?.role != "bussness" && (
+                    <button
+                      onClick={() => move()}
+                      type="button"
+                      class={`btn ${classes.detailservicebtn} `}
+                    >
+                      Book Now! (Manual Input)
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

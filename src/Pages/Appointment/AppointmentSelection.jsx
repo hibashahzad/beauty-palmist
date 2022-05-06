@@ -32,7 +32,7 @@ function AppointmentSelection() {
         loginfirst();
       });
     } else {
-      navigate("/AppointmentDetails");
+      navigate("/AppointmentDetails", { state: { info: location.state.info } });
     }
   };
   return (
@@ -40,7 +40,7 @@ function AppointmentSelection() {
       <div className="heading_contaier">
         <h1 className="heading">
           {location.state.info.name} -{" "}
-          {location.state.info?.BussnesId?.name ||
+          {location.state.info?.BussnesId?.bussnessname ||
             location.state.info?.userid.name}{" "}
         </h1>
         <p className="heading_paragraph">
@@ -112,13 +112,16 @@ function AppointmentSelection() {
             <h2 className="selectionheading">Booking Summary</h2>
             <h6>
               {" "}
-              {location.state.info.name} -{" "}
-              {location.state.info?.BussnesId?.name ||
-                location.state.info?.userid.name}{" "}
+              <b>
+                {" "}
+                {location.state.info.name} -{" "}
+                {location.state.info?.BussnesId?.bussnessname ||
+                  location.state.info?.userid.name}{" "}
+              </b>{" "}
             </h6>
             <h6>4 April 2022, 10.00 am</h6>
             <p>1 hr</p>
-            <p>{location.state.info.Price}</p>
+            <p>Rs {location.state.info.Price}</p>
             <button
               class="btn btn-success batn"
               type="button"

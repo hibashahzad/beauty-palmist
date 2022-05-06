@@ -77,7 +77,7 @@ const ServiceList = () => {
     try {
       setloading(true);
       let result = await beautyService.getService(id);
-      console.log(result);
+      console.log(result, 2);
       setService(result.userServices);
       setOri(result.userServices);
       setloading(false);
@@ -138,7 +138,8 @@ const ServiceList = () => {
                         </div>
                         <div className="col-1"></div>
                         <div className="col-11">
-                          {val.BussnesId?.name || val.userid.name} Services
+                          {val.BussnesId?.bussnessname || val.userid.name}{" "}
+                          Services
                         </div>
                         <div className="col-1"></div>
                         <div className="col-11 fst-italic text-muted">

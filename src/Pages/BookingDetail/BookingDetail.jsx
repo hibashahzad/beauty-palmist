@@ -1,5 +1,9 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import { useAuth } from "../../Services/provideMain";
 const BookingDetail = () => {
+  const { state } = useAuth();
+  const { state: data } = useLocation();
   return (
     <div class="py-5 mainBookingContainer">
       <div class="card mx-auto ClientBookFormCard shadow-lg">
@@ -18,6 +22,8 @@ const BookingDetail = () => {
                       type="text"
                       class="form-control inputTextfields"
                       id="Name"
+                      readOnly={true}
+                      value={state.user?.name}
                     />
                   </div>
                   <div class="col-md-6">
@@ -28,6 +34,7 @@ const BookingDetail = () => {
                       type="tel"
                       class="form-control inputTextfields"
                       id="Contact"
+                      value={state.user?.phoneNo}
                     />
                   </div>
                 </div>
@@ -48,6 +55,8 @@ const BookingDetail = () => {
                       type="email"
                       class="form-control inputTextfields"
                       id="Email"
+                      readOnly={true}
+                      value={state.user?.email}
                     />
                     <label for="Address" class="form-label BookLabels">
                       Address<span class="star">*</span>
@@ -117,7 +126,9 @@ const BookingDetail = () => {
               <hr class="solid" />
               <div class="row Paymentrow">
                 <div class="col-md-6">
-                  <h5 class="floatstart">Service Name</h5>
+                  <h5 class="floatstart">
+                    Service Name :<b>{data.info.name}</b>
+                  </h5>
                 </div>
                 <div class="col-md-6">
                   <h5 class="floatend">...</h5>
@@ -133,25 +144,22 @@ const BookingDetail = () => {
               </div>
               <div class="row Paymentrow">
                 <div class="col-md-6">
-                  <h5 class="floatstart">Location</h5>
+                  <h5 class="floatstart">
+                    Location <b>{data.info?.address || "Not Available"}</b>
+                  </h5>
                 </div>
                 <div class="col-md-6">
                   <h5 class="floatend">...</h5>
                 </div>
               </div>
-              <div class="row Paymentrow">
-                <div class="col-md-6">
-                  <h5 class="floatstart">Staff</h5>
-                </div>
-                <div class="col-md-6">
-                  <h5 class="floatend">...</h5>
-                </div>
-              </div>
+
               <hr class="solid" />
               <h4>Payment Details</h4>
               <div class="row Paymentrow">
                 <div class="col-md-6">
-                  <h5 class="floatstart">Total</h5>
+                  <h5 class="floatstart">
+                    Total: <b>{data.info?.Price} </b>
+                  </h5>
                 </div>
                 <div class="col-md-6">
                   <h5 class="floatend">...</h5>
