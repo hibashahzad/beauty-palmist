@@ -80,7 +80,13 @@ const Header = () => {
             </Nav>
           ) : (
             <h2 style={{ fontWeight: "bold", fontSize: "24px" }}>
-              Welcome {state.user?.name} Its your Dashborad
+              Welcome {state.user?.name} Its your{" "}
+              <span
+                onClick={() => move("/Seller/Dashborad")}
+                style={{ cursor: "pointer" }}
+              >
+                Dashborad
+              </span>
             </h2>
           )}
         </Navbar.Collapse>

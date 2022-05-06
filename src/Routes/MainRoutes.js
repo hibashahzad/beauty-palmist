@@ -18,6 +18,8 @@ import ServiceListS from "../Pages/SellerDashborad/ServiceListS/ServicelistS";
 import AddServices from "../Pages/SellerDashborad/AddServices/AddServices";
 import MyBooking from "../Pages/MyBooking/myBooking";
 import BookingSchedule from "../Pages/SellerDashborad/BookingsSchedule/BookingsS";
+import AppointmentSelection from "../Pages/Appointment/AppointmentSelection";
+import BookingDetail from "../Pages/BookingDetail/BookingDetail";
 
 export default function MainRoutes() {
   return (
@@ -38,6 +40,9 @@ export default function MainRoutes() {
         <Route path="/Palmist" element={<PCategory />} />
         <Route path="/Quiz/:id" element={<Quiz />} />
         <Route path="/MyBooking" element={<MyBooking />} />
+        <Route path="/Appointment" element={<AppointmentSelection />} />
+        <Route path="/AppointmentDetails" element={<BookingDetail />} />
+
         <Route path="Seller">
           <Route index path="Dashborad" element={<HomeSeller />} />
           <Route path="Profile" element={<Profile />} />

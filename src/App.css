@@ -215,3 +215,157 @@ background-color:white
   a[rel=prev]{
     color: blue !important;
   }
+
+  @media only screen and (orientation: landscape) {
+    .main{
+      padding: 30px;
+      flex: 1;
+    }
+    
+    .DateandTime{
+     
+      display: flex;
+    }
+    /* .DateandTime{
+      
+      margin: 10px;
+    } */
+    .Select_heading{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    
+      
+    }
+    .Booking_heading{
+      width: 40%;
+    }
+    .selectedheading{
+      border-bottom: 1px solid black;
+      width: 120%;
+    }
+    .selectionheading{
+      border-bottom: 1px solid black;
+    }
+    .buttons{
+      justify-content: space-between;
+    }
+    .selection_sector{
+      display: flex;
+      justify-content: space-around;
+      width: 120%;
+      padding: 10px;
+    }
+    .botn{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .padding{
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+      border-color: 1px solid black;
+    }
+    .batn{
+      width: 100% !important;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .main{
+      padding: 30px;
+      flex: 1;
+    }
+    
+    /* .DateandTime{
+     
+      display: flex;
+    } */
+    /* .DateandTime{
+      
+      margin: 10px;
+    } */
+    /* .Select_heading{
+     
+      display: flex;
+      justify-content: space-between;
+    
+      
+    } */
+    /* .Booking_heading{
+      width: 40%;
+    } */
+    .selectedheading{
+      border-bottom: 1px solid black;
+      
+    }
+    .selectionheading{
+      border-bottom: 1px solid black;
+    }
+    .buttons{
+      justify-content: space-between;
+    }
+    .selection_sector{
+      /* display: flex;
+      justify-content: space-around; */
+      
+      padding: 10px;
+    }
+    .botn{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .padding{
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+      border-color: 1px solid black;
+    }
+    .batn{
+      width: 100% !important;
+    }
+  }
+
+  .mainBookingContainer{
+
+}
+.ClientBookFormCard{
+    width: 80%;
+}
+.BookLabels{
+    font-weight: bold;
+    color: gray;
+}
+.star{
+color: red;
+}
+.NoteMsg{
+background-color: #F2F2F2;
+font-style: italic;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+.inputTextfields{
+    border: 2px solid gray
+}
+.Paymentrow{
+    font-style: italic;
+}
+.floatend{
+    float: right;
+    font-size: 16px;
+}
+.floatstart{
+    font-size: 16px;
+}
+.paybtn{
+    color: white;
+  
+    width: 100%;
+    margin-top: 20px;
+}

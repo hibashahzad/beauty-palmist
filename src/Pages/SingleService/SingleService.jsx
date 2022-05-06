@@ -1,9 +1,15 @@
+import { move } from "formik";
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import classes from "./SingleService.module.css";
 const SingleService = () => {
-  const {state}=useLocation();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  console.log(state);
+  const move = () => {
+    navigate("/Appointment", { state: { info: state.val } });
+  };
   return (
     <div class={`py-5 ${classes.main}`}>
       <div class="container">
@@ -52,22 +58,22 @@ const SingleService = () => {
             <div class="col-md-6">
               <h5 class={`card-title ${classes.head5}`}>{state?.val?.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
-             
                 {state?.val?.BussnesId?.name}
               </h6>
               <div class="card-body">
-                <p class="card-text">
-             {state?.val?.detail}
-                </p>
+                <p class="card-text">{state?.val?.detail}</p>
                 <div class={classes.cardbuttons}>
-                  {" "}
-                  <button
+                  <p class="card-text">
+                    {state?.val?.address || "Address not Provided"}
+                  </p>{" "}
+                  {/* <button
                     type="button"
                     class={`btn ${classes.detailservicebtn}`}
                   >
                     Book Now! (Calender Method)
-                  </button>
+                  </button> */}
                   <button
+                    onClick={() => move()}
                     type="button"
                     class={`btn ${classes.detailservicebtn} `}
                   >

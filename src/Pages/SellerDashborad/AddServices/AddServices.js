@@ -65,6 +65,7 @@ const AddServices = () => {
           formData.append("image", images[0].file);
           formData.append("ServiceType", values.flexRadioDefault);
           formData.append("BussnesId", getUser()._id);
+          formData.append("address", values.address);
 
           const config = {
             headers: {
@@ -110,6 +111,7 @@ const AddServices = () => {
                 ServiceCategory: Yup.string().required(
                   "Service Category is required"
                 ),
+                Address: Yup.string().required("Address is required"),
                 ServiceCode: Yup.string().required("Service Code is required"),
                 ServiceDescription: Yup.string().required(
                   "Service Description is required"
@@ -185,6 +187,17 @@ const AddServices = () => {
                       <ErrorMessage
                         component="div"
                         name="Price"
+                        className="errorField"
+                      />
+                      <Field
+                        name="Address"
+                        type="text"
+                        class="form-control ServiceTextfield"
+                        id="ServiceName"
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="Address"
                         className="errorField"
                       />
                       {/* <div class="form-group">

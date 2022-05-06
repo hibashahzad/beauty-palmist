@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import UerServices from "./services/UserServices";
 
 import jwt_decode from "jwt-decode";
@@ -15,6 +15,7 @@ export const Reducer = (state, action) => {
   }
 };
 const MainProvide = ({ children }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const [buss, setbuss] = React.useState();
   const login = (token, role = "user", data = "") => {
@@ -28,7 +29,11 @@ const MainProvide = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(data));
       navigate("/Seller/Dashborad");
     } else {
-      navigate("/");
+      navigate(location.state?.from?.pathname || "/", {
+        state: {
+          info: location.state?.info,
+        },
+      });
     }
   };
   const getUser = () => {

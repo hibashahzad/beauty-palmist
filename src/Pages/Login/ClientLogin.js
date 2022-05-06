@@ -9,6 +9,7 @@ import { error, success } from "../../utilties/Messagehandler";
 import { useAuth } from "../../Services/provideMain";
 const ClientLogin = () => {
   let navigate = useNavigate();
+
   let { login } = useAuth();
   let Business = () => {
     navigate("/Business");
