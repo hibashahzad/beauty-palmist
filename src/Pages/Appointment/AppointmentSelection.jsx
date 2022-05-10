@@ -1,3 +1,5 @@
+import { getValue } from "@testing-library/user-event/dist/utils";
+import moment from "moment";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -6,12 +8,16 @@ import Swal from "sweetalert2";
 import { useAuth } from "../../Services/provideMain";
 
 function AppointmentSelection() {
-  const [value, onChange] = useState(new Date());
+  const [value, setdats] = useState(new Date());
+  const [timer, changeTime] = useState("10:00 am");
   const navigate = useNavigate();
   const location = useLocation();
-  let { state: check } = useAuth();
+  let { state: check, saveBooking } = useAuth();
   const setdates = (e) => {
-    console.log(e);
+    setdats(e);
+  };
+  const saveTime = (t) => {
+    changeTime(t);
   };
   const loginfirst = () => {
     navigate("/Clogin", {
@@ -32,6 +38,11 @@ function AppointmentSelection() {
         loginfirst();
       });
     } else {
+      saveBooking({
+        date: moment(value).format("MMM Do YY"),
+        timer,
+        ...location.state.info,
+      });
       navigate("/AppointmentDetails", { state: { info: location.state.info } });
     }
   };
@@ -61,45 +72,84 @@ function AppointmentSelection() {
                 <DatePicker onChange={setdates} selected={value} />
 
                 <div className="buttons">
-                  <h6>Monday,4 Aril</h6>
                   <p>Timezone: Pakistan Standard time (GMT+5)</p>
                   <div className="botn">
-                    <button type="button" class="btn btn-light padding">
+                    <button
+                      type="button"
+                      onClick={() => saveTime("10:00 am")}
+                      class="btn btn-light padding"
+                    >
                       10:00 am
                     </button>
-                    <button type="button" class="btn btn-light padding">
-                      10:00 am
-                    </button>
-                  </div>
-                  <div className="botn">
-                    <button type="button" class="btn btn-light padding">
-                      10:00 am
-                    </button>
-                    <button type="button" class="btn btn-light padding">
-                      10:00 am
-                    </button>
-                  </div>
-                  <div className="botn">
-                    <button type="button" class="btn btn-light padding">
-                      10:00 am
-                    </button>
-                    <button type="button" class="btn btn-light padding">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
                       10:00 am
                     </button>
                   </div>
                   <div className="botn">
-                    <button type="button" class="btn btn-light padding">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
                       10:00 am
                     </button>
-                    <button type="button" class="btn btn-light padding">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
                       10:00 am
                     </button>
                   </div>
                   <div className="botn">
-                    <button type="button" class="btn btn-light padding">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
                       10:00 am
                     </button>
-                    <button type="button" class="btn btn-light padding">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
+                      10:00 am
+                    </button>
+                  </div>
+                  <div className="botn">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("11:00 am")}
+                    >
+                      11:00 am
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
+                      10:00 am
+                    </button>
+                  </div>
+                  <div className="botn">
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
+                      10:00 am
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-light padding"
+                      onClick={() => saveTime("10:00 am")}
+                    >
                       10:00 am
                     </button>
                   </div>
@@ -119,7 +169,9 @@ function AppointmentSelection() {
                   location.state.info?.userid.name}{" "}
               </b>{" "}
             </h6>
-            <h6>4 April 2022, 10.00 am</h6>
+            <h6>
+              {moment(value).format("MMM Do YY")} {timer}
+            </h6>
             <p>1 hr</p>
             <p>Rs {location.state.info.Price}</p>
             <button

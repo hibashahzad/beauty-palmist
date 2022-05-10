@@ -12,6 +12,10 @@ export const Reducer = (state, action) => {
   switch (action.type) {
     case "Login":
       return { ...state, user: action.user, auth: action.auth };
+    case "Booking":
+      return { ...state, bookingInfo: action.bookingInfo };
+    case "Personal":
+      return { ...state, personalInfo: action.personalInfo };
   }
 };
 const MainProvide = ({ children }) => {
@@ -36,6 +40,14 @@ const MainProvide = ({ children }) => {
       });
     }
   };
+
+  const saveBooking = (data = "") => {
+    console.log(data);
+    dispatch({ type: "Booking", bookingInfo: data });
+  };
+  const personalBooking = (data = "") => {
+    dispatch({ type: "Personal", personalInfo: data });
+  };
   const getUser = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user !== "null") return user;
@@ -50,11 +62,21 @@ const MainProvide = ({ children }) => {
   const init = {
     auth: UerServices.isloggedIn(),
     user: UerServices.getloggedInUser(),
+    bookingInfo: {},
   };
   const [state, dispatch] = React.useReducer(Reducer, init);
 
   return (
-    <User.Provider value={{ state, login, getUser, handleLogout }}>
+    <User.Provider
+      value={{
+        state,
+        login,
+        getUser,
+        handleLogout,
+        saveBooking,
+        personalBooking,
+      }}
+    >
       {children}
     </User.Provider>
   );
