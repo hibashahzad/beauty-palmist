@@ -4,12 +4,11 @@ class BookingServices extends GenericServices {
     super();
   }
   addBooking = (data) => {
-    return this.post("Booking", data,);
+    return this.post("booking", data);
   };
   getBooking = (id) => {
-    return this.get("Booking/" + id);
+    return this.get("booking/" + id);
   };
-
 }
 let bookingServices = new BookingServices();
 export default bookingServices;
