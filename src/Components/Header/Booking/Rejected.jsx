@@ -9,7 +9,7 @@ const Rejected = () => {
     bookingServices.getBooking(state.user._id).then((val) => {
       setServices(val.Booking.filter((val) => val.status == 2));
     });
-  }, []);
+  }, [service]);
   return (
     <ul class="list-group">
       <li class="list-group-item">

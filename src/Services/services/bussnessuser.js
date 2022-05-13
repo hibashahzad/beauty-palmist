@@ -4,13 +4,13 @@ class BussnessServices extends GenericServices {
     super();
   }
   addBussness = (data, config) => {
-    return this.postconfig("Bookings", data, config);
+    return this.postconfig("Bussness", data, config);
   };
   getBussness = (id) => {
-    return this.get("Bookings/" + id);
+    return this.get("Bussness/" + id);
   };
   getBussnessOwner = (id) => {
-    return this.get("Bookings/Owner/" + id);
+    return this.get("Bussness/Owner/" + id);
   };
 }
 let bussnessServices = new BussnessServices();

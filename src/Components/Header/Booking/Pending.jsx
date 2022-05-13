@@ -1,5 +1,6 @@
 import React from "react";
 import { Tab, Tabs } from "react-bootstrap";
+import Swal from "sweetalert2";
 import { useAuth } from "../../../Services/provideMain";
 import bookingServices from "../../../Services/services/booking";
 
@@ -12,7 +13,17 @@ const Pending = () => {
       setServices(val.Booking.filter((val) => val.status == 0));
       setServicesP(val.Booking.filter((val) => val.status == 1));
     });
-  }, []);
+  }, [service]);
+  const updateBooking = async (id) => {
+    await bookingServices.updatebooking(id, { status: "3" });
+    setServices(service.filter((val) => val._id != id));
+    Swal.fire("Booking canceled");
+  };
+  const updateBookings = async (id) => {
+    await bookingServices.updatebooking(id, { status: "3" });
+    setServicesP(serviceP.filter((val) => val._id != id));
+    Swal.fire("Booking canceled");
+  };
   return (
     <Tabs
       defaultActiveKey="Requested"
@@ -38,6 +49,7 @@ const Pending = () => {
                       <button
                         type="button"
                         class="btn btn-outline-dark actionbtn"
+                        onClick={() => updateBookings(val._id)}
                       >
                         Cancel Request
                       </button>
@@ -76,6 +88,7 @@ const Pending = () => {
                       <button
                         type="button"
                         class="btn btn-outline-dark actionbtn"
+                        onClick={() => updateBooking(val._id)}
                       >
                         Cancel Request
                       </button>
@@ -84,6 +97,29 @@ const Pending = () => {
                         class="btn btn-outline-dark actionbtn"
                       >
                         Confirm Booking
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-outline-dark actionbtn"
+                        onClick={() =>
+                          Swal.fire({
+                            title: "Detail",
+                            html: `
+                          <div style="font-weight:bold">Price:${val.Price}</div>
+                          <div style="font-weight:bold">Building:${val.Building}</div>
+                          <div style="font-weight:bold">Address:${val.Address}</div>
+                          <div style="font-weight:bold">City:${val.City}</div>
+                          <div style="font-weight:bold">State:${val.State}</div>
+                          <div style="font-weight:bold">Message:${val.Message}</div>
+                          
+                         
+                      `,
+
+                            confirmButtonText: "Ok",
+                          })
+                        }
+                      >
+                        View Booking Form
                       </button>
                     </div>
                   </div>

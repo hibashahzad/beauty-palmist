@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import { useAuth } from "../../../Services/provideMain";
 import bookingServices from "../../../Services/services/booking";
 
@@ -9,7 +10,7 @@ const History = () => {
     bookingServices.getBooking(state.user._id).then((val) => {
       setServices(val.Booking.filter((val) => val.status == 4));
     });
-  }, []);
+  }, [service]);
   return (
     <ul class="list-group">
       <li class="list-group-item">
@@ -29,8 +30,28 @@ const History = () => {
                   <button type="button" class="btn btn-outline-dark actionbtn">
                     Give Feedback
                   </button>
-                  <button type="button" class="btn btn-outline-dark actionbtn">
-                    Book Again
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark actionbtn"
+                    onClick={() =>
+                      Swal.fire({
+                        title: "Detail",
+                        html: `
+                          <div style="font-weight:bold">Price:${val.Price}</div>
+                          <div style="font-weight:bold">Building:${val.Building}</div>
+                          <div style="font-weight:bold">Address:${val.Address}</div>
+                          <div style="font-weight:bold">City:${val.City}</div>
+                          <div style="font-weight:bold">State:${val.State}</div>
+                          <div style="font-weight:bold">Message:${val.Message}</div>
+                          
+                         
+                      `,
+
+                        confirmButtonText: "Ok",
+                      })
+                    }
+                  >
+                    View Booking Form
                   </button>
                 </div>
               </div>
