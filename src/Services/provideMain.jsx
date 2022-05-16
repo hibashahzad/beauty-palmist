@@ -19,9 +19,13 @@ export const Reducer = (state, action) => {
   }
 };
 const MainProvide = ({ children }) => {
+  const [refresh, setrefresh] = React.useState(true);
   const location = useLocation();
   const navigate = useNavigate();
   const [buss, setbuss] = React.useState();
+  const refetch = () => {
+    setrefresh(!refresh);
+  };
   const login = (token, role = "user", data = "") => {
     var decoded;
     if (token) {
@@ -75,6 +79,8 @@ const MainProvide = ({ children }) => {
         handleLogout,
         saveBooking,
         personalBooking,
+        refresh,
+        refetch,
       }}
     >
       {children}

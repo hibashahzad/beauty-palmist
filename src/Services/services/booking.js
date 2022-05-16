@@ -3,6 +3,9 @@ class BookingServices extends GenericServices {
   constructor() {
     super();
   }
+  updateBookingPayment = (data, id, config) => {
+    return this.putconfig("booking/Payment/" + id, data, config);
+  };
   addBooking = (data) => {
     return this.post("booking", data);
   };

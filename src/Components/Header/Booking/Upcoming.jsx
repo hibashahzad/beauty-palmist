@@ -5,15 +5,16 @@ import bookingServices from "../../../Services/services/booking";
 
 const Upcoming = () => {
   const [service, setServices] = React.useState([]);
-  const { state } = useAuth();
+  const { state, refresh, refetch } = useAuth();
   React.useEffect(() => {
     bookingServices.getBooking(state.user._id).then((val) => {
       setServices(val.Booking.filter((val) => val.status == 0));
     });
-  }, [service]);
+  }, [refresh]);
   const updateBooking = async (id) => {
     await bookingServices.updatebooking(id, { status: "3" });
     setServices(service.filter((val) => val._id != id));
+    refetch();
     Swal.fire("Booking canceled");
   };
   return (
@@ -67,7 +68,7 @@ const Upcoming = () => {
             </div>
           ))
         ) : (
-          <h1>No Bokoing</h1>
+          <h1>No Booking</h1>
         )}
       </li>
     </ul>

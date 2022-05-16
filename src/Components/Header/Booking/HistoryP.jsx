@@ -5,12 +5,12 @@ import bookingServices from "../../../Services/services/booking";
 
 const HistoryP = () => {
   const [service, setServices] = React.useState([]);
-  const { state } = useAuth();
+  const { state, refresh } = useAuth();
   React.useEffect(() => {
     bookingServices.getOwnerBooking(state.user._id).then((val) => {
       setServices(val.Booking.filter((val) => val.status == 4));
     });
-  }, []);
+  }, [refresh]);
   return (
     <ul class="list-group">
       <li class="list-group-item">
@@ -40,6 +40,8 @@ const HistoryP = () => {
                           <div style="font-weight:bold">City:${val.City}</div>
                           <div style="font-weight:bold">State:${val.State}</div>
                           <div style="font-weight:bold">Message:${val.Message}</div>
+                          <h3>Payment Screenshot</h3>
+                          <img src="http://localhost:3000/${val.screenshot}" />
                           
                          
                       `,

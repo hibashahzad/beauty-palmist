@@ -5,12 +5,14 @@ import bookingServices from "../../../Services/services/booking";
 
 const Canceled = () => {
   const [service, setServices] = React.useState([]);
-  const { state } = useAuth();
+  const { state, refresh } = useAuth();
   React.useEffect(() => {
     bookingServices.getOwnerBooking(state.user._id).then((val) => {
-      setServices(val.Booking.filter((val) => val.status == 3));
+      setServices(
+        val.Booking.filter((val) => val.status == 2 || val.status == 3)
+      );
     });
-  }, [service]);
+  }, [refresh]);
   return (
     <ul class="list-group ">
       <li class="list-group-item">

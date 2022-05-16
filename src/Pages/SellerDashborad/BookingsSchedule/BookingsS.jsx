@@ -1,6 +1,7 @@
 import { Tab, Tabs } from "react-bootstrap";
 import CanceledS from "../../../Components/Header/Booking/CanceledS";
 import HistoryP from "../../../Components/Header/Booking/HistoryP";
+import PaymentS from "../../../Components/Header/Booking/PaymentS";
 import Upcomings from "../../../Components/Header/Booking/UpcomingS";
 
 import "./BookingsS.css";
@@ -10,7 +11,7 @@ const BookingSchedule = () => {
     <>
       <div class="py-5 mainbookings">
         <div class="card booktopcard">
-        <div class="card toppings">Booking Schedule</div>
+          <div class="card toppings">Booking Schedule</div>
           <Tabs
             defaultActiveKey="BookingSchedules"
             id="uncontrolled-tab-example"
@@ -18,16 +19,15 @@ const BookingSchedule = () => {
           >
             <Tab eventKey="BookingSchedules" title="Booking Schedules">
               <div class="card p-3">
-              <div class="row">
-            <div class="col">
-              <input
-                class="form-control form-control-lg form-control-borderless"
-                type="search by Client Name"
-                placeholder="Search by Client Name"
-              />
-            </div>
-          </div>
-                
+                <div class="row">
+                  <div class="col">
+                    <input
+                      class="form-control form-control-lg form-control-borderless"
+                      type="search by Client Name"
+                      placeholder="Search by Client Name"
+                    />
+                  </div>
+                </div>
 
                 <Tabs
                   defaultActiveKey="upcoming"
@@ -39,6 +39,9 @@ const BookingSchedule = () => {
                   </Tab>
                   <Tab eventKey="history" title="History">
                     <HistoryP />
+                  </Tab>
+                  <Tab eventKey="Payment" title="Payment">
+                    <PaymentS />
                   </Tab>
 
                   <Tab eventKey="cancelled" title="Cancelled">

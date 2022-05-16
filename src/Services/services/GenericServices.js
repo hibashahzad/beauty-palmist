@@ -58,5 +58,17 @@ class GenericServices {
           reject(err.response.data);
         });
     });
+
+  putconfig = (url, data, config) =>
+    new Promise((resolve, reject) => {
+      axios
+        .put(url, data, config)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch((err) => {
+          reject(err.response.data);
+        });
+    });
 }
 export default GenericServices;

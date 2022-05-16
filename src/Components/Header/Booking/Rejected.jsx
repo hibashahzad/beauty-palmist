@@ -4,12 +4,12 @@ import bookingServices from "../../../Services/services/booking";
 
 const Rejected = () => {
   const [service, setServices] = React.useState([]);
-  const { state } = useAuth();
+  const { state, refresh } = useAuth();
   React.useEffect(() => {
     bookingServices.getBooking(state.user._id).then((val) => {
       setServices(val.Booking.filter((val) => val.status == 2));
     });
-  }, [service]);
+  }, [refresh]);
   return (
     <ul class="list-group">
       <li class="list-group-item">
