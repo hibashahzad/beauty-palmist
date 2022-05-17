@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Form } from "formik";
 import { Field } from "formik";
 import bookingServices from "../../Services/services/booking";
+import Swal from "sweetalert2";
 const BookingDetail = () => {
   const { state } = useAuth();
   const { state: data } = useLocation();
@@ -41,7 +42,11 @@ const BookingDetail = () => {
         UserId: state.user._id,
         OwnerId: data.info.userid._id,
       })
-      .then((val) => {});
+      .then((val) => {
+        Swal.fire(
+          "Your Booking is done Your can see Bokkings detail in My bOOKING"
+        );
+      });
   };
   return (
     <div class="py-5 mainBookingContainer">
