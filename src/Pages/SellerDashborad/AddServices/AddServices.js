@@ -22,6 +22,7 @@ const AddServices = () => {
     ServiceCode: "",
     ServiceDescription: "",
     Price: "",
+    address: "",
     flexRadioDefault: "",
   });
 
@@ -32,25 +33,41 @@ const AddServices = () => {
   };
   const [images, setImages] = React.useState([]);
   React.useEffect(() => {
-    SubCategory.getSubCategoryByCategory(getUser().categoryId?._id).then(
-      (val) => {
-        setCat(val.subcategory);
-        setInitial({
-          ...initial,
-          ServiceName: edit.val.name,
+    if (edit?.val) {
+      SubCategory.getSubCategoryByCategory(getUser().categoryId?._id).then(
+        (val) => {
+          setCat(val.subcategory);
+          setInitial({
+            ...initial,
+            ServiceName: edit.val.name,
 
-          ServiceDescription: edit.val.detail,
-          Price: edit.val.Price,
-          flexRadioDefault: edit.val.ServiceType,
-        });
-      }
-    );
-    console.log(cat);
+            ServiceDescription: edit.val.detail,
+            Price: edit.val.Price,
+            flexRadioDefault: edit.val.ServiceType,
+          });
+        }
+      );
+    }
+  }, []);
+  React.useEffect(() => {
+    if (!edit?.val) {
+      SubCategory.getSubCategoryByCategory(getUser().categoryId?._id).then(
+        (val) => {
+          setCat(val.subcategory);
+          setInitial({
+            ...initial,
+            ServiceCode:
+              Math.floor(Math.random() * 1000 + 10 + Math.random() * 100 + 1) +
+              getUser().categoryId._id,
+          });
+        }
+      );
+    }
   }, []);
   const handleFormSubmit = (values) => {
     try {
+      console.log(2);
       if (!edit?.val) {
-        console.log(edit.val);
         if (images[0]) {
           const formData = new FormData();
 
@@ -111,12 +128,12 @@ const AddServices = () => {
                 ServiceCategory: Yup.string().required(
                   "Service Category is required"
                 ),
-                Address: Yup.string().required("Address is required"),
+
                 ServiceCode: Yup.string().required("Service Code is required"),
                 ServiceDescription: Yup.string().required(
                   "Service Description is required"
                 ),
-                Price: Yup.number().required("PhoneNo is required"),
+                Price: Yup.number().required("Price is required"),
               })}
               onSubmit={handleFormSubmit}
             >
@@ -189,8 +206,11 @@ const AddServices = () => {
                         name="Price"
                         className="errorField"
                       />
+                      <label for="ServicePrice" class="ServiceLabel">
+                        Address
+                      </label>
                       <Field
-                        name="Address"
+                        name="address"
                         type="text"
                         class="form-control ServiceTextfield"
                         id="ServiceName"

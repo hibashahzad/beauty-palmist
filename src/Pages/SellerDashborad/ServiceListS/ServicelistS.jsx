@@ -123,7 +123,7 @@ const ServiceListS = () => {
                     <div className="col-8 fw-bold">{val.name}</div>
                     <div className="col-3">
                       <button
-                        onClick={() => SingleService("/SingleService")}
+                        onClick={() => SingleService("/SingleService", val)}
                         class={`btn btn-primary ${classes[`login-btn`]}`}
                       >
                         View Services<i class="fa fa-arrow-right ps-2"></i>
