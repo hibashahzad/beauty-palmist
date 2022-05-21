@@ -12,6 +12,15 @@ export const Reducer = (state, action) => {
   switch (action.type) {
     case "Login":
       return { ...state, user: action.user, auth: action.auth };
+    case "userupdate":
+      return {
+        ...state,
+        user: {
+          ...action.user,
+          name: action.info.name,
+          phoneNo: action.info.phone,
+        },
+      };
     case "Booking":
       return { ...state, bookingInfo: action.bookingInfo };
     case "Personal":
@@ -43,6 +52,10 @@ const MainProvide = ({ children }) => {
         },
       });
     }
+  };
+  const updateUser = (data) => {
+    console.log({ info: data });
+    dispatch({ type: "userupdate", info: data });
   };
 
   const saveBooking = (data = "") => {
@@ -80,6 +93,7 @@ const MainProvide = ({ children }) => {
         saveBooking,
         personalBooking,
         refresh,
+        updateUser,
         refetch,
       }}
     >

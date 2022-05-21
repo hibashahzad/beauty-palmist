@@ -17,10 +17,21 @@ const Pending = () => {
     });
   }, [refresh]);
   const updateBooking = async (id) => {
-    await bookingServices.updatebooking(id, { status: "3" });
-    setServices(service.filter((val) => val._id != id));
-    refetch();
-    Swal.fire("Booking canceled");
+    Swal.fire({
+      title: "Are You Sure You want to cancel it",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+    }).then(async (s) => {
+      if (s.isConfirmed) {
+        await bookingServices.updatebooking(id, { status: "3" });
+        setServices(service.filter((val) => val._id != id));
+        refetch();
+        Swal.fire("Booking canceled");
+      } else {
+        Swal.fire("Booking Not Cancel");
+      }
+    });
   };
   const onChange = (imageList, addUpdateIndex) => {
     // data for submit

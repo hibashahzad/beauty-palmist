@@ -8,6 +8,7 @@ import beautyService from "./../../../Services/services/Servicesbeauty";
 import { useAuth } from "../../../Services/provideMain";
 import { urlImage } from "./../../../Services/url";
 import ReactPaginate from "react-paginate";
+import bookingServices from "../../../Services/services/booking";
 const ServiceListS = () => {
   const { state } = useAuth();
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const ServiceListS = () => {
   const [loading, setloading] = React.useState(false);
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
@@ -30,6 +32,7 @@ const ServiceListS = () => {
 
     // byCategory
   }, [id]);
+
   const find = (e) => {
     setService(
       ori.filter((fil) =>
@@ -130,32 +133,7 @@ const ServiceListS = () => {
                       </button>
                     </div>
                     <div className="col-1 fw-bold"></div>
-                    <div className="col-md-8">
-                      <Rating
-                        style={{ fontSize: "10px", color: "#FFCC00" }}
-                        initialRating={4}
-                        readonly
-                        stop={5}
-                        emptySymbol={[
-                          "fa fa-star-o fa-2x low",
-                          "fa fa-star-o fa-2x low",
-                          "fa fa-star-o fa-2x medium",
-                          "fa fa-star-o fa-2x medium",
-                          "fa fa-star-o fa-2x high",
-                          "fa fa-star-o fa-2x high",
-                        ]}
-                        fullSymbol={[
-                          "fa fa-star fa-2x low",
-                          "fa fa-star fa-2x low",
-                          "fa fa-star fa-2x medium",
-                          "fa fa-star fa-2x medium",
-                          "fa fa-star fa-2x high",
-                          "fa fa-star fa-2x high",
-                        ]}
-                      />
-                      <span className="mx-2">0.0</span>
-                      <span className="mx-2">0 Ratings</span>
-                    </div>
+                    <div className="col-md-8"></div>
                     <div
                       className="col-3 text-center"
                       style={{ fontSize: "24px" }}

@@ -23,9 +23,15 @@ const ClientLogin = () => {
   const handleFormSubmit = async (values, { setSubmitting }) => {
     try {
       const data = await UerServices.login(values.email, values.password);
-      success(data.message);
-      setSubmitting(false);
-      login(data.token);
+      if (data.role != "bussness") {
+        success(data.message);
+        setSubmitting(false);
+        login(data.token);
+      } else {
+        error(
+          "You are not registered as a Client please login through bussness Login"
+        );
+      }
     } catch (e) {
       error(e.error);
     }

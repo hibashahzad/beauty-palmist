@@ -1,9 +1,25 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { useAuth } from "../../../Services/provideMain";
+import bussnessServices from "../../../Services/services/bussnessuser";
 import "./UserProfile.css";
 const UserProfile = () => {
-  let { state } = useAuth();
+  let { state, updateUser } = useAuth();
+  const [profile, setProfile] = React.useState({
+    name: state.user.name,
+    email: state.user.email,
+    phone: state.user.phoneNo,
+  });
+  console.log(state);
+  const profileUpdate = (e) => {
+    const { name, value } = e.target;
+    setProfile({ ...profile, [name]: value });
+  };
+  const submits = () => {
+    bussnessServices.updateUser(profile).then((val) => {
+      updateUser(profile);
+    });
+  };
   return (
     <div class="py-5 ">
       <div class="card toppings">Profile Update</div>
@@ -20,10 +36,12 @@ const UserProfile = () => {
                 </label>
                 <input
                   type="name"
-                  value={state.user.name}
+                  value={profile.name}
                   class="form-control "
                   id="Name"
+                  name="name"
                   placeholder="Name"
+                  onChange={profileUpdate}
                 />
               </div>
 
@@ -35,9 +53,11 @@ const UserProfile = () => {
                   type="number"
                   class="form-control "
                   id="emailId"
-                  value={state.user.phoneNo}
+                  name="phone"
+                  value={profile.phone}
                   aria-describedby="emailHelp"
                   placeholder="Phoneno"
+                  onChange={profileUpdate}
                 />
               </div>
               <div class="col-md-6">
@@ -47,17 +67,26 @@ const UserProfile = () => {
 
                 <input
                   type="email"
-                  value={state.user.email}
+                  readOnly
+                  name="email"
+                  value={profile.email}
                   class="form-control "
                   id="emailId"
                   aria-describedby="emailHelp"
                   placeholder="Password"
+                  onChange={profileUpdate}
                 />
               </div>
             </div>
 
             <div class="btnupdate mt-4  text-end">
-              <button type="button" class="btn btn-lg btn-dark">
+              <button
+                type="button"
+                class="btn btn-lg btn-dark"
+                onClick={() => {
+                  submits();
+                }}
+              >
                 Update Info
               </button>
             </div>

@@ -47,6 +47,7 @@ const Quiz = () => {
             naviagte("/Seller/ServiceListS");
           });
       } else {
+        console.log(ans);
         naviagte("/List", {
           state: {
             ans,

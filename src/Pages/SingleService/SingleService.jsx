@@ -3,14 +3,38 @@ import React from "react";
 import { Carousel } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Services/provideMain";
+import bookingServices from "../../Services/services/booking";
 import classes from "./SingleService.module.css";
 const SingleService = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   let { state: check } = useAuth();
+  const [review, setReview] = React.useState([]);
+  const [total, SetTotal] = React.useState();
   console.log(state);
   const move = () => {
     navigate("/Appointment", { state: { info: state.val } });
+  };
+  React.useEffect(() => {
+    bookingServices.getReview(state.val._id).then((val) => {
+      setReview(val.Reviews);
+    });
+  }, []);
+  const average = () => {
+    return (
+      review.reduce((acc, cuurent) => acc + cuurent.rating, 0) / review.length
+    );
+  };
+  const stars = (val) => {
+    return (
+      (review.reduce(
+        (acc, cuurent) => (cuurent.rating == val ? (acc += 1) : (acc += 0)),
+        0
+      ) /
+        review.length) *
+        100 +
+      "%"
+    );
   };
   return (
     <div class={`py-5 ${classes.main}`}>
@@ -104,10 +128,11 @@ const SingleService = () => {
                     <div class="ratings text-center p-4 py-5">
                       {" "}
                       <span class="badge bg-success">
-                        4.1 <i class="fa fa-star-o"></i>
+                        {average() ? average() : 0} <i class="fa fa-star-o"></i>
                       </span>{" "}
-                      <span class="d-block about-rating">VERY GOOD</span>{" "}
-                      <span class="d-block total-ratings">183 ratings</span>{" "}
+                      <span class="d-block total-ratings">
+                        {review.length} rating
+                      </span>{" "}
                     </div>
                   </div>
                   <div class="col-md-8">
@@ -120,13 +145,13 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: "70%" }}
+                            style={{ width: stars("5") }}
                             aria-valuenow="70"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
                             {" "}
-                            71%{" "}
+                            {stars("5")}
                           </div>
                         </div>
                         <div class="progress">
@@ -136,12 +161,12 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: "55%" }}
+                            style={{ width: stars("4") }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            55%
+                            {stars("4")}
                           </div>
                         </div>
                         <div class="progress">
@@ -151,12 +176,12 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: "48%" }}
+                            style={{ width: stars("3") }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            48%
+                            {stars("3")}
                           </div>
                         </div>
                         <div class="progress">
@@ -166,12 +191,12 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: "30%" }}
+                            style={{ width: stars("2") }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            30%
+                            {stars("2")}
                           </div>
                         </div>
                         <div class="progress">
@@ -181,12 +206,12 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: "15%" }}
+                            style={{ width: stars("1") }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            15%
+                            {stars("1")}
                           </div>
                         </div>
                       </div>
@@ -196,37 +221,28 @@ const SingleService = () => {
                 <div class="row d-flex justify-content-center align-items-center">
                   <div class="col-sm-7">
                     <div class="review-block">
-                      {new Array(10).fill(0).map((val) => (
-                        <>
-                          <div class="row">
-                            <div class="col-sm-3">
-                              <h6>Customer</h6>
-                              <div
-                                class="review-block-name"
-                                style={{ color: "green", fontWeight: "bold" }}
-                              >
-                                Verified User
+                      {review.length > 0 ? (
+                        review.map((val) => (
+                          <>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6>Customer</h6>
                               </div>
-                              <div class="review-block-date">
-                                January 29, 2016
-                                <br />1 day ago
-                              </div>
-                            </div>
-                            <div class="col-sm-9">
-                              <div class="review-block-title">
-                                this was nice in buy
-                              </div>
-                              <div class="review-block-description">
-                                this was nice in buy. this was nice in buy. this
-                                was nice in buy. this was nice in buy this was
-                                nice in buy this was nice in buy this was nice
-                                in buy this was nice in buy
+                              <div class="col-sm-9">
+                                <div class="review-block-title">
+                                  Stars:{val.rating}
+                                </div>
+                                <div class="review-block-description">
+                                  {val.comment}
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <hr />
-                        </>
-                      ))}
+                            <hr />
+                          </>
+                        ))
+                      ) : (
+                        <h1>No Reviews</h1>
+                      )}
                     </div>
                   </div>{" "}
                 </div>{" "}

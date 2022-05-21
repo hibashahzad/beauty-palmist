@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import Swal from "sweetalert2";
 import { useAuth } from "../../../Services/provideMain";
@@ -8,9 +9,31 @@ const Upcoming = () => {
   const { state, refresh, refetch } = useAuth();
   React.useEffect(() => {
     bookingServices.getBooking(state.user._id).then((val) => {
-      setServices(val.Booking.filter((val) => val.status == 0));
+      setServices(
+        val.Booking.filter(
+          (val) =>
+            val.status == 4 &&
+            !moment(formatDate(val.Date))
+              .startOf("day")
+              .fromNow()
+              .includes("ago")
+        )
+      );
+      console.log(formatDate("May 11th 14"));
     });
   }, [refresh]);
+  function formatDate(date) {
+    let main = date.replace("th", "");
+    var d = new Date(main),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
   const updateBooking = async (id) => {
     await bookingServices.updatebooking(id, { status: "3" });
     setServices(service.filter((val) => val._id != id));

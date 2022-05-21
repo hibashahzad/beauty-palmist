@@ -20,6 +20,7 @@ import MyBooking from "../Pages/MyBooking/myBooking";
 import BookingSchedule from "../Pages/SellerDashborad/BookingsSchedule/BookingsS";
 import AppointmentSelection from "../Pages/Appointment/AppointmentSelection";
 import BookingDetail from "../Pages/BookingDetail/BookingDetail";
+import Review from "../Pages/Review/review";
 
 export default function MainRoutes() {
   return (
@@ -42,6 +43,7 @@ export default function MainRoutes() {
         <Route path="/MyBooking" element={<MyBooking />} />
         <Route path="/Appointment" element={<AppointmentSelection />} />
         <Route path="/AppointmentDetails" element={<BookingDetail />} />
+        <Route path="/review" element={<Review />} />
 
         <Route path="Seller">
           <Route index path="Dashborad" element={<HomeSeller />} />

@@ -43,9 +43,7 @@ const BookingDetail = () => {
         OwnerId: data.info.userid._id,
       })
       .then((val) => {
-        Swal.fire(
-          "Your Booking is done Your can see Bokkings detail in My bOOKING"
-        );
+        Swal.fire("Your Service is booked");
       });
   };
   return (

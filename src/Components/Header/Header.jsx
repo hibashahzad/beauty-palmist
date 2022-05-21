@@ -63,12 +63,20 @@ const Header = () => {
                 Palmist Quiz
               </Nav.Link>
               {!state.auth ? (
-                <Nav.Link
-                  className={`${classes.white} normal1`}
-                  onClick={() => move("/Clogin")}
-                >
-                  Login
-                </Nav.Link>
+                <>
+                  <Nav.Link
+                    className={`${classes.white} normal1`}
+                    onClick={() => move("/Clogin")}
+                  >
+                    Login
+                  </Nav.Link>
+                  <Nav.Link
+                    className={`${classes.white} normal1`}
+                    onClick={() => move("/Selection")}
+                  >
+                    SignUp
+                  </Nav.Link>
+                </>
               ) : (
                 <Nav.Link
                   className={`${classes.white} normal1`}
@@ -106,7 +114,7 @@ const Header = () => {
               {state.user?.role != "bussness" ? (
                 <DropdownButton
                   id="dropdown-basic-button"
-                  title={UerServices.getloggedInUser()?.name}
+                  title={state.user?.name}
                   className="drop"
                 >
                   <Dropdown.Item onClick={() => move("/MyBooking")}>

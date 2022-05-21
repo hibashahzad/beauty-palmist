@@ -1,17 +1,57 @@
 import React from "react";
 import Swal from "sweetalert2";
+import moment from "moment";
 import { useAuth } from "../../../Services/provideMain";
 import bookingServices from "../../../Services/services/booking";
+import { useNavigate } from "react-router-dom";
 
 const History = () => {
   const [service, setServices] = React.useState([]);
-
+  const [review, setReview] = React.useState([]);
+  const navigate = useNavigate();
   const { state, refresh } = useAuth();
   React.useEffect(() => {
     bookingServices.getBooking(state.user._id).then((val) => {
-      setServices(val.Booking.filter((val) => val.status == 4));
+      setServices(
+        val.Booking.filter(
+          (val) =>
+            val.status == 4 &&
+            moment(formatDate(val.Date))
+              .startOf("day")
+              .fromNow()
+              .includes("ago")
+        )
+      );
     });
   }, [refresh]);
+  React.useEffect(() => {
+    if (service.length > 0) {
+      console.log(service);
+      bookingServices.getReviews().then((val) => {
+        setReview(val.Reviews);
+      });
+    }
+  }, [service]);
+
+  const get = (vals) => {
+    console.log(review.some((val) => val.ServiceId == vals));
+    return review.some((val) => val.BookId == vals);
+  };
+  const move = (val) => {
+    navigate("/review", { state: { info: val } });
+  };
+  function formatDate(date) {
+    let main = date.replace("th", "");
+    var d = new Date(main),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
   return (
     <ul class="list-group">
       <li class="list-group-item">
@@ -28,9 +68,15 @@ const History = () => {
               </div>
               <div class="col-md-6">
                 <div class="row">
-                  <button type="button" class="btn btn-outline-dark actionbtn">
-                    Give Feedback
-                  </button>
+                  {!get(val?._id) && (
+                    <button
+                      type="button"
+                      class="btn btn-outline-dark actionbtn"
+                      onClick={() => move(val)}
+                    >
+                      Give Feedback
+                    </button>
+                  )}
                   <button
                     type="button"
                     class="btn btn-outline-dark actionbtn"

@@ -40,11 +40,8 @@ const ServiceList = () => {
             )
           )
         );
-        let ids = recom
-          .filter((val, index) =>
-            recom.findIndex((value) => (value._id == val._id) != index)
-          )
-          .map((valid) => valid.ServiceId._id);
+        console.log(recom);
+        let ids = recom.map((valid) => valid.ServiceId._id);
         console.log(ids);
         beautyService.recommendationServices({ ids: ids }).then((result) => {
           console.log(ids);

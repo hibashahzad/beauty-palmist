@@ -96,10 +96,6 @@ const BRegister = () => {
               enableReinitialize={true}
               initialValues={initial}
               validationSchema={Yup.object().shape({
-                name: Yup.string()
-                  .min(3, "name must be 3 characters at minimum")
-                  .max(10, "name must be 11 characters at max")
-                  .required("Name is Required"),
                 email: Yup.string()
                   .email("Invalid email address format")
                   .required("Email is required"),
@@ -119,7 +115,7 @@ const BRegister = () => {
                 bussnessStatus: Yup.string().required(
                   "Bussness Status is Required"
                 ),
-                account: Yup.string().required("Social Link is Required"),
+
                 about: Yup.string()
                   .min(25, "Please enter atleast 25 charcater")
                   .required("About is required"),
@@ -191,6 +187,19 @@ const BRegister = () => {
                           className="errorField"
                         />
                       </div>
+                      <div class="form-group">
+                        <Field
+                          name="confirmPassword"
+                          type="password"
+                          class="form-control"
+                          placeholder=" Confirm Password"
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="confirmPassword"
+                          className="errorField"
+                        />
+                      </div>
 
                       <div class="form-group">
                         <Field
@@ -228,19 +237,6 @@ const BRegister = () => {
                       />
                     </div>
                     <div class=" col-md-6">
-                      <div class="form-group">
-                        <Field
-                          name="confirmPassword"
-                          type="password"
-                          class="form-control"
-                          placeholder=" Confirm Password"
-                        />
-                        <ErrorMessage
-                          component="div"
-                          name="confirmPassword"
-                          className="errorField"
-                        />
-                      </div>
                       <div class="form-group">
                         <Field
                           name="phoneNo"
