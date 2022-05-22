@@ -19,15 +19,7 @@ const BookingSchedule = () => {
           >
             <Tab eventKey="BookingSchedules" title="Booking Schedules">
               <div class="card p-3">
-                <div class="row">
-                  <div class="col">
-                    <input
-                      class="form-control form-control-lg form-control-borderless"
-                      type="search by Client Name"
-                      placeholder="Search by Client Name"
-                    />
-                  </div>
-                </div>
+                <div class="row"></div>
 
                 <Tabs
                   defaultActiveKey="upcoming"

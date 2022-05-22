@@ -42,7 +42,7 @@ const Review = () => {
                   </label>
                   <input
                     type="text"
-                    class="form-control inputTextfields"
+                    class="form-control inputTextfields mb-4"
                     id="Name"
                     name="name"
                     onChange={(e) => setComment(e.target.value)}

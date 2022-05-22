@@ -35,10 +35,24 @@ const UpcomingS = () => {
     return [year, month, day].join("-");
   }
   const updateBooking = async (id, value) => {
-    await bookingServices.updatebooking(id, { status: value });
+    Swal.fire({
+      title: "Are You Sure You want to cancel it",
+      showDenyButton: true,
 
-    refetch();
-    Swal.fire(`Booking ${value == 2 ? "Rejected" : "approved"}`);
+      confirmButtonText: "Yes",
+    }).then(async (s) => {
+      if (s.isConfirmed) {
+        await bookingServices.updatebooking(id, {
+          status: value,
+          canceledBy: "Owner",
+        });
+
+        refetch();
+        Swal.fire(`Booking ${value == 2 ? "Rejected" : "approved"}`);
+      } else {
+        Swal.fire(`Booking not ${value == 2 ? "Rejected" : "approved"}`);
+      }
+    });
   };
   return (
     <ul class="list-group">

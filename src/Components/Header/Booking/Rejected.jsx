@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 import { useAuth } from "../../../Services/provideMain";
 import bookingServices from "../../../Services/services/booking";
 
@@ -10,6 +11,9 @@ const Rejected = () => {
       setServices(val.Booking.filter((val) => val.status == 2));
     });
   }, [refresh]);
+  const message = (val) => {
+    Swal.fire(val);
+  };
   return (
     <ul class="list-group">
       <li class="list-group-item">
@@ -26,7 +30,11 @@ const Rejected = () => {
               </div>
               <div class="col-md-6">
                 <div class="row">
-                  <button type="button" class="btn btn-outline-dark actionbtn">
+                  <button
+                    type="button"
+                    class="btn btn-outline-dark actionbtn"
+                    onClick={() => message("Booking not Available")}
+                  >
                     View Message
                   </button>
                 </div>

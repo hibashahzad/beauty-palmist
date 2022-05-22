@@ -1,10 +1,13 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import "./Profile.css";
+import { useAuth } from "../../../../Services/provideMain";
 const Profile = () => {
+  const { state, getUser } = useAuth();
+  console.log(state);
   return (
     <div class="py-5 mainProfileSettings">
-      <div class="card toppings">Profile Update</div>
+      <div class="card toppings">Profile Settings</div>
       <div class="card settingcard">
         <div class="card-header hdcard">
           <div class="row">
@@ -16,7 +19,7 @@ const Profile = () => {
               />
             </div>
             <div class="col-md-2">
-              <h3>User Name</h3>
+              <h3>{state.user.name}</h3>
             </div>
           </div>
         </div>
@@ -28,79 +31,68 @@ const Profile = () => {
                   type="name"
                   class="form-control settingfield"
                   id="username"
-                  placeholder="Aesthetic In."
+                  readOnly
+                  value={getUser().bussnessname}
+                  placeholder="companyname"
                 />
                 <input
                   type="address"
                   class="form-control settingfield"
                   id="LocationId"
+                  readOnly
+                  value={getUser().address}
                   placeholder="Location/Address"
                 />
                 <input
-                  type="email"
+                  type="text"
                   class="form-control settingfield"
-                  id="emailId"
-                  aria-describedby="emailHelp"
-                  placeholder="Email Id"
+                  id="about"
+                  readOnly
+                  value={state.user.email}
+                  placeholder="Status"
                 />
-                <small id="emailHelp" class="form-text text-danger">
-                  Verification email will be sent to your email id. Visit the
-                  link to confirm updated email address
-                </small>
               </div>
-              <div class="col-md-6">
-                <div class="card sidesettingcard">
-                  <h6 class="sidecardlbl">
-                    Current Status:{" "}
-                    <span class="status">Home Based/Small Business</span>
-                  </h6>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="flexCheckDefault"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Set Status to Registered?
-                    </label>
-                  </div>
-
-                  <label class="sidecardlbl">Attach Documents</label>
-                  <div class="custom-file">
-                    <input
-                      type="file"
-                      class="custom-file-input"
-                      id="customFile"
-                    />
-                    <label class="custom-file-label" for="customFile"></label>
-                  </div>
-                  <label class="sidecardlbl">Document Title</label>
-                  <input
-                    type="text"
-                    class="form-control docfield"
-                    id="doctitle"
-                  />
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark approvalbtn"
-                  >
-                    Send for Approval
-                  </button>
-                </div>
+              <div className="col-md-6">
+                <input
+                  type="text"
+                  class="form-control settingfield"
+                  id="about"
+                  readOnly
+                  value={getUser().categoryId.name}
+                  placeholder="Category Name"
+                />
+                <input
+                  type="text"
+                  class="form-control settingfield"
+                  id="about"
+                  readOnly
+                  value={getUser().bussnessstatus}
+                  placeholder="Status"
+                />
+                <input
+                  type="text"
+                  class="form-control settingfield"
+                  id="about"
+                  readOnly
+                  value={state.user.name}
+                  placeholder="Status"
+                />
               </div>
             </div>
             <input
               type="text"
               class="form-control aboutfield"
               id="about"
+              readOnly
+              value={getUser().about}
               placeholder="About"
             />
-            <div class="btnupdate">
+
+            {/* <div class="btnupdate">
               <button type="button" class="btn btn-lg btn-dark">
                 Update
               </button>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

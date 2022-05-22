@@ -53,6 +53,7 @@ const Canceled = () => {
                   </button>
                 </div>
               </div>
+              <h3>Cancelled By:{val.canceledBy}</h3>
             </div>
           ))
         ) : (

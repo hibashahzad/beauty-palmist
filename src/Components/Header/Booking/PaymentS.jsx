@@ -13,7 +13,10 @@ const PaymentS = () => {
     });
   }, [refresh]);
   const updateBooking = async (id, value) => {
-    await bookingServices.updatebooking(id, { status: value });
+    await bookingServices.updatebooking(id, {
+      status: value,
+      canceledBy: "Owner",
+    });
 
     refetch();
     Swal.fire(`Booking Scheduled`);
