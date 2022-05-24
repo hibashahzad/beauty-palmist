@@ -101,7 +101,11 @@ const BRegister = () => {
                   .required("Email is required"),
                 password: Yup.string()
                   .min(3, "Password must be 3 characters at minimum")
-                  .required("Password is required"),
+                  .required("Please Enter your password")
+                  .matches(
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+                    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+                  ),
                 phoneNo: Yup.number()
                   .min(3, "PhoneNo must be 11 characters at minimum")
                   .required("PhoneNo is required"),

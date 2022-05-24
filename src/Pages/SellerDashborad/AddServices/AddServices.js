@@ -69,30 +69,8 @@ const AddServices = () => {
       console.log(2);
       if (!edit?.val) {
         if (images[0]) {
-          const formData = new FormData();
-
-          formData.append("name", values.ServiceName);
-
-          formData.append("categoryId", getUser().categoryId?._id);
-          formData.append("subCategoryId", values.ServiceCategory);
-          formData.append("userid", state.user._id);
-          formData.append("serviceCode", values.ServiceCode);
-          formData.append("detail", values.ServiceDescription);
-          formData.append("Price", values.Price);
-          formData.append("image", images[0].file);
-          formData.append("ServiceType", values.flexRadioDefault);
-          formData.append("BussnesId", getUser()._id);
-          formData.append("address", values.address);
-
-          const config = {
-            headers: {
-              "content-type": "multipart/form-data",
-            },
-          };
-
-          beautyService.addBussness(formData, config).then((val) => {
-            success("Service is added");
-            navigate("/Quiz/" + values.ServiceCategory, { state: { val } });
+          navigate("/Quiz", {
+            state: { values: values, image: images[0] },
           });
         } else {
           error("Please upload Logo");

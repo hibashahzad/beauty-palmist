@@ -4,27 +4,28 @@ import Quizs from "../../../Services/services/quiz";
 import classes from "../../Login/Login.module.css";
 
 import "./Quiz.css";
-import { error } from "./../../../utilties/Messagehandler";
+import { error, success } from "./../../../utilties/Messagehandler";
 import quizAnswer from "../../../Services/services/quizAnswer";
 import { useAuth } from "../../../Services/provideMain";
+import beautyService from "../../../Services/services/Servicesbeauty";
 const Quiz = () => {
   const naviagte = useNavigate();
   const { state: data } = useLocation();
   const move = (val) => naviagte("/List");
   const [ans, setAns] = React.useState([]);
-  let { id } = useParams();
+
   const [quiz, setQuiz] = React.useState([]);
   const [loading, setloading] = React.useState(false);
-  let { state, handleLogout } = useAuth();
+  let { state, handleLogout, getUser } = useAuth();
   React.useEffect(() => {
     getcate();
 
     // byCategory
-  }, [id]);
+  }, []);
   const getcate = async () => {
     try {
       setloading(true);
-      let result = await Quizs.getQuiz(id);
+      let result = await Quizs.getQuiz(data.values.ServiceCategory);
 
       setQuiz(result.quiz);
       setloading(false);
@@ -36,23 +37,46 @@ const Quiz = () => {
   const submithandler = () => {
     try {
       if (state?.user?.role === "bussness") {
-        quizAnswer
-          .createAnswer({
-            Answer: ans,
-            ServiceId: data.val.userServices._id,
+        const formData = new FormData();
 
-            SubCategoryId: id,
-          })
-          .then((value) => {
-            naviagte("/Seller/ServiceListS");
-          });
+        formData.append("name", data.values.ServiceName);
+
+        formData.append("categoryId", getUser().categoryId?._id);
+        formData.append("subCategoryId", data.values.ServiceCategory);
+        formData.append("userid", state.user._id);
+        formData.append("serviceCode", data.values.ServiceCode);
+        formData.append("detail", data.values.ServiceDescription);
+        formData.append("Price", data.values.Price);
+        formData.append("image", data.image.file);
+        formData.append("ServiceType", data.values.flexRadioDefault);
+        formData.append("BussnesId", getUser()._id);
+        formData.append("address", data.values.address);
+
+        const config = {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        };
+        beautyService.addBussness(formData, config).then((val) => {
+          quizAnswer
+            .createAnswer({
+              Answer: ans,
+              ServiceId: val.userServices._id,
+
+              SubCategoryId: data.values.ServiceCategory,
+            })
+            .then((value) => {
+              success("Service is added");
+              naviagte("/Seller/ServiceListS");
+            });
+        });
       } else {
         console.log(ans);
         naviagte("/List", {
           state: {
             ans,
 
-            SubCategoryId: id,
+            SubCategoryId: data.values.ServiceCategory,
           },
         });
       }

@@ -7,6 +7,7 @@ import DatePicker from "sassy-datepicker";
 import Swal from "sweetalert2";
 import { useAuth } from "../../Services/provideMain";
 import bookingServices from "../../Services/services/booking";
+import { error } from "../../utilties/Messagehandler";
 
 function AppointmentSelection() {
   const [value, setdats] = useState(new Date());
@@ -85,12 +86,18 @@ function AppointmentSelection() {
         loginfirst();
       });
     } else {
-      saveBooking({
-        date: moment(value).format("MMM Do YY"),
-        timer,
-        ...location.state.info,
-      });
-      navigate("/AppointmentDetails", { state: { info: location.state.info } });
+      if (!timer.includes("No Select")) {
+        saveBooking({
+          date: moment(value).format("MMM Do YY"),
+          timer,
+          ...location.state.info,
+        });
+        navigate("/AppointmentDetails", {
+          state: { info: location.state.info },
+        });
+      } else {
+        error("Please Select Date");
+      }
     }
   };
   return (

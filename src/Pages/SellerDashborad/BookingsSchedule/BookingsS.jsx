@@ -2,6 +2,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import CanceledS from "../../../Components/Header/Booking/CanceledS";
 import HistoryP from "../../../Components/Header/Booking/HistoryP";
 import PaymentS from "../../../Components/Header/Booking/PaymentS";
+import PendingS from "../../../Components/Header/Booking/PendingS";
 import Upcomings from "../../../Components/Header/Booking/UpcomingS";
 
 import "./BookingsS.css";
@@ -31,6 +32,9 @@ const BookingSchedule = () => {
                   </Tab>
                   <Tab eventKey="history" title="History">
                     <HistoryP />
+                  </Tab>
+                  <Tab eventKey="pending" title="Pending">
+                    <PendingS />
                   </Tab>
                   <Tab eventKey="Payment" title="Payment">
                     <PaymentS />
