@@ -145,13 +145,15 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: stars("5") }}
+                            style={{
+                              width: stars("5") != "NaN%" ? stars("5") : 0,
+                            }}
                             aria-valuenow="70"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
                             {" "}
-                            {stars("5")}
+                            {stars("5") != "NaN%" ? stars("5") : 0}
                           </div>
                         </div>
                         <div class="progress">
@@ -161,12 +163,14 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: stars("4") }}
+                            style={{
+                              width: stars("4") != "NaN%" ? stars("4") : 0,
+                            }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            {stars("4")}
+                            {stars("4") != "NaN%" ? stars("4") : 0}
                           </div>
                         </div>
                         <div class="progress">
@@ -176,12 +180,14 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: stars("3") }}
+                            style={{
+                              width: stars("3") != "NaN%" ? stars("3") : 0,
+                            }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            {stars("3")}
+                            {stars("3") != "NaN%" ? stars("3") : 0}
                           </div>
                         </div>
                         <div class="progress">
@@ -191,12 +197,14 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: stars("2") }}
+                            style={{
+                              width: stars("2") != "NaN%" ? stars("2") : 0,
+                            }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            {stars("2")}
+                            {stars("2") != "NaN%" ? stars("2") : 0}
                           </div>
                         </div>
                         <div class="progress">
@@ -206,12 +214,14 @@ const SingleService = () => {
                           <div
                             class="progress-bar bg-warning"
                             role="progressbar"
-                            style={{ width: stars("1") }}
+                            style={{
+                              width: stars("1") != "NaN%" ? stars("1") : 0,
+                            }}
                             aria-valuenow="25"
                             aria-valuemin="0"
                             aria-valuemax="100"
                           >
-                            {stars("1")}
+                            {stars("1") != "NaN%" ? stars("1") : 0}
                           </div>
                         </div>
                       </div>

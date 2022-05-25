@@ -123,7 +123,11 @@ function AppointmentSelection() {
               </h2>
 
               <div className="selection_sector">
-                <DatePicker onChange={setdates} selected={value} />
+                <DatePicker
+                  onChange={setdates}
+                  selected={value}
+                  minDate={new Date(Date.now())}
+                />
 
                 <div className="buttons">
                   <p>Timezone: Pakistan Standard time (GMT+5)</p>

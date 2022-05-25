@@ -13,13 +13,33 @@ const PaymentS = () => {
     });
   }, [refresh]);
   const updateBooking = async (id, value) => {
+    Swal.fire({
+      title: "Are You Sure You want to cancel it",
+      showDenyButton: true,
+
+      confirmButtonText: "Yes",
+    }).then(async (s) => {
+      if (s.isConfirmed) {
+        await bookingServices.updatebooking(id, {
+          status: value,
+          canceledBy: "Owner",
+        });
+
+        refetch();
+        Swal.fire(`Booking Canceled`);
+      } else {
+        Swal.fire(`Booking Not  Canceled`);
+      }
+    });
+  };
+  const updateBookings = async (id, value) => {
     await bookingServices.updatebooking(id, {
       status: value,
       canceledBy: "Owner",
     });
 
     refetch();
-    Swal.fire(`Booking Scheduled`);
+    Swal.fire(`Booking Booked`);
   };
   return (
     <ul class="list-group">
@@ -46,8 +66,9 @@ const PaymentS = () => {
                   </button>
                   <button
                     type="button"
+                    disabled={val.screenshot == "No" ? true : false}
                     class="btn btn-outline-dark actionbtn"
-                    onClick={() => updateBooking(val._id, 4)}
+                    onClick={() => updateBookings(val._id, 4)}
                   >
                     Approve Payment
                   </button>

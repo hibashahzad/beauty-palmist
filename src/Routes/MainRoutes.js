@@ -40,6 +40,7 @@ export default function MainRoutes() {
 
         <Route path="/Palmist" element={<PCategory />} />
         <Route path="/Quiz" element={<Quiz />} />
+        <Route path="/Quiz/:id" element={<Quiz />} />
         <Route path="/MyBooking" element={<MyBooking />} />
         <Route path="/Appointment" element={<AppointmentSelection />} />
         <Route path="/AppointmentDetails" element={<BookingDetail />} />

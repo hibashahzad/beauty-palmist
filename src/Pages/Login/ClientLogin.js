@@ -98,7 +98,7 @@ const ClientLogin = () => {
                       <div class="form-group mb-3">
                         <Field
                           name="password"
-                          type="text"
+                          type="password"
                           placeholder="password"
                           className="form-control"
                         />

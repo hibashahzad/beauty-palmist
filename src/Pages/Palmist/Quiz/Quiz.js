@@ -13,7 +13,7 @@ const Quiz = () => {
   const { state: data } = useLocation();
   const move = (val) => naviagte("/List");
   const [ans, setAns] = React.useState([]);
-
+  const { id } = useParams();
   const [quiz, setQuiz] = React.useState([]);
   const [loading, setloading] = React.useState(false);
   let { state, handleLogout, getUser } = useAuth();
@@ -25,7 +25,9 @@ const Quiz = () => {
   const getcate = async () => {
     try {
       setloading(true);
-      let result = await Quizs.getQuiz(data.values.ServiceCategory);
+      let result = await Quizs.getQuiz(
+        state?.user?.role === "bussness" ? data.values?.ServiceCategory : id
+      );
 
       setQuiz(result.quiz);
       setloading(false);
@@ -76,7 +78,7 @@ const Quiz = () => {
           state: {
             ans,
 
-            SubCategoryId: data.values.ServiceCategory,
+            SubCategoryId: id,
           },
         });
       }

@@ -28,6 +28,7 @@ const ServiceList = () => {
     if (ispalmist) {
       let recom = [];
       setloading(true);
+      console.log(state.SubCategoryId, 4);
       quizAnswer.getAnswer(state.SubCategoryId).then((val) => {
         state.ans.map((userans) =>
           recom.push(
@@ -40,9 +41,9 @@ const ServiceList = () => {
             )
           )
         );
-        console.log(recom);
-        let ids = recom.map((valid) => valid.ServiceId._id);
-        console.log(ids);
+        console.log(recom[0].ServiceId.Price, 4);
+        let ids = recom.map((valid) => valid.ServiceId?._id);
+        console.log(2);
         beautyService.recommendationServices({ ids: ids }).then((result) => {
           console.log(ids);
           setService(result.userServices);
