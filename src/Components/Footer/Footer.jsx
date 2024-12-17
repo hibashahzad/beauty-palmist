@@ -17,7 +17,7 @@
 
         </div>
   <div className="text-muted">
-      <div>©2021 by CUI CRS Portal. Proudly created by Comsats</div>
+      <div>©2025. Proudly created by UOL Students </div>
   </div>
   </div>
   </div>

@@ -77,7 +77,7 @@ function AppointmentSelection() {
       Swal.fire({
         title: "Detail",
         html: `
-            <h2>You need to Login first Before conitinue</h2>
+            <h2>You need to Login first Before continue</h2>
           
         `,
 

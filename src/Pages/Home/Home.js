@@ -136,9 +136,9 @@ const Home = () => {
                            <img src="person 1.jpg " class="card-img-top rounded-circle cards-img" alt="..."/>
                         </div>
                         <div class="card-body">
-                           <h5 class="card-title text-center font-weight-bolder">Name</h5>
+                           <h5 class="card-title text-center font-weight-bolder">Hiba</h5>
                            <h6 class="text-center font-weight-normal text-muted">Designer</h6>
-                           <p class="card-text text-center font-weight-normal text-dark p-3">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                           <p class="card-text text-center font-weight-normal text-dark p-3">I was solely resposible for the UI/UX.</p>
                           
                         </div>
                      </div>

@@ -44,6 +44,7 @@ const BookingDetail = () => {
       })
       .then((val) => {
         Swal.fire("Booking Request has been sent");
+        
       });
   };
   return (
