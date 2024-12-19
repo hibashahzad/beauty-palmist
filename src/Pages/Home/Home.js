@@ -98,85 +98,109 @@ const Home = () => {
         </div>
       </div>
       <div class="container-fluid about ">
-         <div class="container-fluid">
-            <div class="row">
-       
-               <div class="col-md-12 pt-5">
-               <h1 class="text-center ">About Us</h1>
-               <p class="text-center font-weight-normal text-muted pt-2">Choose from a variety of categories from Personal Care to Fitness Your beauty answers are just a few questions away!</p>
-                 
-               </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 pt-5">
+              <h1 class="text-center ">About Us</h1>
+              <p class="text-center font-weight-normal text-muted pt-2">
+                Choose from a variety of categories from Personal Care to
+                Fitness Your beauty answers are just a few questions away!
+              </p>
             </div>
-         </div>
-         </div>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid about pb-5">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-2"></div>
-               <div class="col-md-8 col-12">
-                 
-               </div>
-               <div class="col-2"></div>
-               
-            </div>
-            <div class="row">
-               <div class="col-2"></div>
-               <div class="col-md-8 col-12">
-                 
-               </div>
-               <h2 class="text-left">Our Team</h2>
-               <div class="col-2"></div>
-            </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-md-8 col-12"></div>
+            <div class="col-2"></div>
+          </div>
+          <div class="row">
+            <div class="col-2"></div>
+            <div class="col-md-8 col-12"></div>
+            <h2 class="text-left">Our Team</h2>
+            <div class="col-2"></div>
+          </div>
 
-            <div class="row mt-5">
-               <div class="col-xl-4 col-md-6 pt-2">
-                  <div class="d-flex justify-content-center">
-                     <div class="card shadow-lg">
-                        <div class="card-images text-center">
-                           <img src="person 1.jpg " class="card-img-top rounded-circle cards-img" alt="..."/>
-                        </div>
-                        <div class="card-body">
-                           <h5 class="card-title text-center font-weight-bolder">Hiba</h5>
-                           <h6 class="text-center font-weight-normal text-muted">Designer</h6>
-                           <p class="card-text text-center font-weight-normal text-dark p-3">I was solely resposible for the UI/UX.</p>
-                          
-                        </div>
-                     </div>
+          <div class="row mt-5">
+            <div class="col-xl-4 col-md-6 pt-2">
+              <div class="d-flex justify-content-center">
+                <div class="card shadow-lg">
+                  <div class="card-images text-center">
+                    <img
+                      src="person 1.jpg "
+                      class="card-img-top rounded-circle cards-img"
+                      alt="..."
+                    />
                   </div>
-               </div>
-               <div class="col-xl-4 col-md-6 pt-2">
-                  <div class="d-flex justify-content-center">
-                     <div class="card shadow-lg" >
-                        <div class="card-images text-center">
-                           <img src="person 2.jpg" class="card-img-top rounded-circle cards-img" alt="..."/>
-                        </div>
-                        <div class="card-body">
-                           <h5 class="card-title text-center font-weight-bolder">Name</h5>
-                           <h6 class="text-center font-weight-normal text-muted">Developer</h6>
-                           <p class="card-text text-center font-weight-normal text-dark p-3">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                           
-                        </div>
-                     </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center font-weight-bolder">
+                      Hiba
+                    </h5>
+                    <h6 class="text-center font-weight-normal text-muted">
+                      Designer
+                    </h6>
+                    <p class="card-text text-center font-weight-normal text-dark p-3">
+                      I was solely resposible for the UI/UX.
+                    </p>
                   </div>
-               </div>
-               <div class="col-xl-4 col-md-6 pt-2">
-                  <div class="d-flex justify-content-center">
-                     <div class="card shadow-lg" >
-                        <div class="card-images text-center">
-                           <img src="person 3.jpg " class="card-img-top rounded-circle cards-img" alt="..."/>
-                        </div>
-                        <div class="card-body">
-                           <h5 class="card-title text-center font-weight-bolder">Name</h5>
-                           <h6 class="text-center font-weight-normal text-muted">Beauty Expert</h6>
-                           <p class="card-text text-center font-weight-normal text-dark p-3">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                         
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            
+                </div>
+              </div>
             </div>
-         </div>
+            <div class="col-xl-4 col-md-6 pt-2">
+              <div class="d-flex justify-content-center">
+                <div class="card shadow-lg">
+                  <div class="card-images text-center">
+                    <img
+                      src="person 2.jpg"
+                      class="card-img-top rounded-circle cards-img"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center font-weight-bolder">
+                      Name
+                    </h5>
+                    <h6 class="text-center font-weight-normal text-muted">
+                      Developer
+                    </h6>
+                    <p class="card-text text-center font-weight-normal text-dark p-3">
+                      A small river named Duden flows by their place and
+                      supplies it with the necessary regelialia.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 pt-2">
+              <div class="d-flex justify-content-center">
+                <div class="card shadow-lg">
+                  <div class="card-images text-center">
+                    <img
+                      src="person 3.jpg "
+                      class="card-img-top rounded-circle cards-img"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center font-weight-bolder">
+                      Name
+                    </h5>
+                    <h6 class="text-center font-weight-normal text-muted">
+                      Beauty Expert
+                    </h6>
+                    <p class="card-text text-center font-weight-normal text-dark p-3">
+                      A small river named Duden flows by their place and
+                      supplies it with the necessary regelialia.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className={classes.main} style={{ backgroundColor: "blue" }}>
         <div class="container">
@@ -270,7 +294,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-  
+
       <div class="container-fluid contact">
         <div class="container contact">
           <div class="row">
@@ -286,7 +310,9 @@ const Home = () => {
               </p>
               <br />
               <h6 class="colo">
-                <button className="btn btn-dark" href="mailto:">Email Us</button>
+                <button className="btn btn-dark" href="mailto:">
+                  Email Us
+                </button>
               </h6>
               <h6 class="colo">Office: (0332)-xxxxxxx</h6>
             </div>

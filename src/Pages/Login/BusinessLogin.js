@@ -11,21 +11,23 @@ const BusniessLogin = () => {
   let navigate = useNavigate();
   const { login } = useAuth();
   let Client = () => {
-    navigate("/Clogin");
+    navigate("/login");
   };
   const move = (name) => {
     navigate(name);
   };
   const handleFormSubmit = async (values, { setSubmitting }) => {
+    // console.log("🚀 ~ file: BusinessLogin.js:20 ~ values:", values);
     try {
       const data = await UerServices.login(values.email, values.password);
-      if (data.status == 1) {
+      // console.log("🚀 ~ file: BusinessLogin.js:23 ~ data:", data);
+      if (data.status === 0) {
         bussnessServices.getBussness(data.id).then((value) => {
           success(data.message);
           login(data.token, "bussness", value.bussness);
           setSubmitting(false);
         });
-      } else if (data.status == 0) {
+      } else if (data.status === 1) {
         error(
           "Your Application is Not Apporved Yet or You are not Registered as A bussnessUser"
         );

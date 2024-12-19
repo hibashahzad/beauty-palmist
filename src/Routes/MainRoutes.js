@@ -26,7 +26,7 @@ export default function MainRoutes() {
   return (
     <>
       <Routes>
-        <Route path="/Clogin" element={<ClientLogin />} />
+        <Route path="/login" element={<ClientLogin />} />
         <Route path="/Business" element={<BusniessLogin />} />
         <Route path="/Selection" element={<Selection />} />
         <Route path="/ClientR" element={<CRegister />} />
