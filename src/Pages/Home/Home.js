@@ -213,7 +213,7 @@ const Home = () => {
                 Best Online Booking for Beauty care
               </div>
             </div>
-            <div class="col-md-4  text-center flipY  ">
+            <div class="col-md-6  text-center flipY  ">
               <div
                 class="card shadow p-3 mb-5 bg-white rounded pb-5 ho"
                 data-t-show="1"
@@ -241,7 +241,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-4 text-center flipY" data-t-show="2">
+            <div class="col-md-6 text-center flipY" data-t-show="2">
               <div class="card shadow p-4 mb-5 bg-white rounded ho">
                 <div class="card-body">
                   <div class="card-img-top">
@@ -267,7 +267,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-4  text-center flipY" data-t-show="3">
+            {/* <div class="col-md-4  text-center flipY" data-t-show="3">
               <div class="card shadow p-3 mb-5 bg-white rounded ho">
                 <div class="card-body">
                   <div class="card-img-top">
@@ -290,7 +290,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

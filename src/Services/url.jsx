@@ -1,1 +1,1 @@
-export const urlImage="http://localhost:3000/";
+export const urlImage = "http://localhost:8000/";

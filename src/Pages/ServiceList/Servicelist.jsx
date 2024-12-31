@@ -14,12 +14,14 @@ const ServiceList = () => {
   const [ori, setOri] = React.useState([]);
   const [loading, setloading] = React.useState(false);
   const { state } = useLocation();
+  // console.log("🚀 ~ state-----------", state);
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
   const ispalmist = !id;
+  // console.log("🚀 ~ ispalmist-----------", ispalmist);
   const SingleService = (name, val) => {
     navigate(name, { state: { val } });
   };
@@ -28,35 +30,70 @@ const ServiceList = () => {
     if (ispalmist) {
       let recom = [];
       setloading(true);
-      console.log(state.SubCategoryId, 4);
-      quizAnswer.getAnswer(state.SubCategoryId).then((val) => {
-        state.ans.map((userans) =>
-          recom.push(
-            ...val.quiz.filter((fil) =>
-              fil.Answer.some(
-                (finding) =>
-                  finding.answer == userans.answer &&
-                  finding.name == userans.name
+
+      quizAnswer
+        .getAnswer(state.SubCategoryId)
+        .then((val) => {
+          if (!val.quiz || !Array.isArray(val.quiz)) {
+            throw new Error("Invalid quiz data");
+          }
+
+          // Filter and push matching answers
+          state.ans.forEach((userans) => {
+            recom.push(
+              ...val.quiz.filter((fil) =>
+                fil.Answer?.some(
+                  (finding) =>
+                    finding.answer === userans.answer &&
+                    finding.name === userans.name
+                )
               )
-            )
-          )
-        );
-        console.log(recom[0].ServiceId.Price, 4);
-        let ids = recom.map((valid) => valid.ServiceId?._id);
-        console.log(2);
-        beautyService.recommendationServices({ ids: ids }).then((result) => {
-          console.log(ids);
-          setService(result.userServices);
-          setOri(result.userServices);
+            );
+          });
+
+          // Validate recom array
+          if (recom.length === 0) {
+            console.warn("No matching recommendations found");
+            setloading(false);
+            return;
+          }
+
+          console.log("🚀 ~ Recom Data:", recom);
+
+          // Validate and map ids
+          let ids = recom
+            .filter((valid) => valid.ServiceId) // Ensure ServiceId exists
+            .map((valid) => valid.ServiceId._id);
+
+          if (ids.length === 0) {
+            console.warn("No valid ServiceIds found in recommendations");
+            setloading(false);
+            return;
+          }
+
+          console.log("🚀 ~ Service IDs:", ids);
+
+          // Fetch recommendations
+          return beautyService.recommendationServices({ ids });
+        })
+        .then((result) => {
+          if (result?.userServices) {
+            setService(result.userServices);
+            setOri(result.userServices);
+          } else {
+            console.warn("No user services returned");
+          }
+          setloading(false);
+        })
+        .catch((error) => {
+          console.error("Error in useEffect:", error.message);
           setloading(false);
         });
-      });
     } else {
       getcate();
     }
-
-    // byCategory
   }, [id]);
+
   React.useEffect(() => {
     // Fetch subCat from another resources.
     const endOffset = itemOffset + itemsPerPage;

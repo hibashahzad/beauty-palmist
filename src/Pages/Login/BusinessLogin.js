@@ -11,7 +11,7 @@ const BusniessLogin = () => {
   let navigate = useNavigate();
   const { login } = useAuth();
   let Client = () => {
-    navigate("/login");
+    navigate("/Clogin");
   };
   const move = (name) => {
     navigate(name);
